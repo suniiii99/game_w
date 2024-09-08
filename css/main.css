@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bodys-menu {
+  background: url(../img/fondo.jpg) no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+}
+
+h1 {
+  font-family: "October Twilight", sans-serif;
+  color: #990000;
+}
+
+.logo {
+  display: table;
+  margin: auto;
+}
+
+.top-nav {
+  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  list-style-type: none;
+  text-decoration: none;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.nav-list-link {
+  font-size: 3.125rem;
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  font-size: 4.25rem;
+}
+
+/*# sourceMappingURL=main.css.map */

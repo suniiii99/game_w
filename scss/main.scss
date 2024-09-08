@@ -1,0 +1,57 @@
+$ff-logo: 'October Twilight', sans-serif;
+$ff-menu:'Twisted Halloween PERSONAL', sans-serif;
+$crl-logo: #990000 ;
+$crl-menu: #000000;
+$fs-nm: 1rem; //16
+$fs-xnm: 1.25rem; //20
+$fs-md: 1.875rem; //30
+$fs-xmd: 2.5rem; //40
+$fs-xxmd: 3.125rem; //50
+$fs-lg: 3.75rem; //60
+$fs-xl: 4rem; //70 4.375
+$fs-xxl: 5rem;//80
+$fs-gt: 6.25rem; //100
+$fs-xgt: 7.5rem;//120
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.bodys-menu{
+    background: url(../img/fondo.jpg) no-repeat center center;
+    background-size: cover;
+    padding-top: 7rem;  
+}
+h1{
+ font-family:$ff-logo;
+ color: $crl-logo;
+}
+
+.logo {
+    display: table;
+    margin:  auto; 
+}
+.top-nav{
+   font-family: $ff-menu;
+    list-style-type: none;
+    text-decoration: none;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+.nav-list-link{
+ 
+    font-size:$fs-xxmd;
+    text-decoration: none;
+    color:$crl-menu;
+    transition: all 0.3s ease;
+
+}
+a:hover{
+    font-size: calc($fs-lg + 0.5rem);
+}

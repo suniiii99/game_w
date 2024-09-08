@@ -9,6 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded ./scss:./css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
@@ -20,5 +21,8 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0"
+  },
+  "dependencies": {
+    "sass": "^1.78.0"
   }
 }
