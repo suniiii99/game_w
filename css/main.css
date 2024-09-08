@@ -15,6 +15,18 @@ h1 {
   color: #990000;
 }
 
+h3 {
+  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  text-align: center;
+  font-size: 1.875rem;
+}
+
+.p__title {
+  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  font-size: 1.875rem;
+  text-align: center;
+}
+
 .logo {
   display: table;
   margin: auto;
@@ -62,10 +74,10 @@ a:hover {
   color: white;
 }
 
-main {
+.main_controls {
   margin-top: 0;
   background: url(../img/controles.png) no-repeat center;
-  padding-bottom: 18rem;
+  padding-bottom: 30rem;
   background-size: contain;
 }
 
@@ -74,7 +86,17 @@ main {
   font-family: "Twisted Halloween PERSONAL", sans-serif;
   text-align: center;
   padding-top: 0rem;
-  margin-top: -100px;
+  margin-top: -180px;
+  color: white;
+}
+
+.main_credits {
+  background-color: #CCCC99;
+  border-radius: 10px;
+  padding: 8rem;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=main.css.map */
