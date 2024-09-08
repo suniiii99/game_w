@@ -2,6 +2,7 @@ $ff-logo: 'October Twilight', sans-serif;
 $ff-menu:'Twisted Halloween PERSONAL', sans-serif;
 $crl-logo: #990000 ;
 $crl-menu: #000000;
+$crl-title: #FFFFFF;
 $fs-nm: 1rem; //16
 $fs-xnm: 1.25rem; //20
 $fs-md: 1.875rem; //30
@@ -44,7 +45,16 @@ h1{
     gap: 1rem;
     text-align: center;
 }
+
 .nav-list-link{
+ 
+    font-size:$fs-xxmd;
+    text-decoration: none;
+    color:$crl-menu;
+    transition: all 0.3s ease;
+
+}
+.botton-nav{
  
     font-size:$fs-xxmd;
     text-decoration: none;
@@ -55,3 +65,38 @@ h1{
 a:hover{
     font-size: calc($fs-lg + 0.5rem);
 }
+.button {
+    font-family: $ff-menu;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    margin-left: 20px; 
+    border: none;
+    background-color: transparent; 
+    font-size:$fs-xl ;
+   
+
+ 
+}
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: white; 
+}
+
+main{
+    margin-top: 0;
+    background: url(../img/controles.png) no-repeat center; 
+    padding-bottom: 18rem;
+    background-size: contain;
+}
+.title{
+    font-size: $fs-lg;
+    font-family: $ff-menu;
+    text-align: center;
+    padding-top: 0rem;
+    margin-top: -100px;
+    
+  
+}
+
+
+

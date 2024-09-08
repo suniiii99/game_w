@@ -36,8 +36,45 @@ h1 {
   transition: all 0.3s ease;
 }
 
+.botton-nav {
+  font-size: 3.125rem;
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
 a:hover {
   font-size: 4.25rem;
+}
+
+.button {
+  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+  border: none;
+  background-color: transparent;
+  font-size: 4rem;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+main {
+  margin-top: 0;
+  background: url(../img/controles.png) no-repeat center;
+  padding-bottom: 18rem;
+  background-size: contain;
+}
+
+.title {
+  font-size: 3.75rem;
+  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  text-align: center;
+  padding-top: 0rem;
+  margin-top: -100px;
 }
 
 /*# sourceMappingURL=main.css.map */
