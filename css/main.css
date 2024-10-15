@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -16,13 +17,13 @@ h1 {
 }
 
 h3 {
-  font-family: "Twisted Halloween PERSONAL", sans-serif;
-  text-align: center;
-  font-size: 1.875rem;
+  font-family: "Lilita One", sans-serif;
+  font-size: 1rem;
+  padding: 14px;
 }
 
 .p__title {
-  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  font-family: "Hedvig Letters Serif", serif;
   font-size: 1.875rem;
   text-align: center;
 }
@@ -33,7 +34,7 @@ h3 {
 }
 
 .top-nav {
-  font-family: "Twisted Halloween PERSONAL", sans-serif;
+  font-family: "Lilita One", sans-serif;
   list-style-type: none;
   text-decoration: none;
   align-items: center;
@@ -55,10 +56,6 @@ h3 {
   transition: all 0.3s ease;
 }
 
-a:hover {
-  font-size: 4.25rem;
-}
-
 .button {
   font-family: "Twisted Halloween PERSONAL", sans-serif;
   padding: 1rem 2rem;
@@ -71,7 +68,7 @@ a:hover {
 
 .button:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color: white;
+  color: #FFFFFF;
 }
 
 .main_controls {
@@ -82,12 +79,24 @@ a:hover {
 }
 
 .title {
-  font-size: 3.75rem;
+  font-size: "Lilita One", sans-serif;
   font-family: "Twisted Halloween PERSONAL", sans-serif;
   text-align: center;
   padding-top: 0rem;
   margin-top: -180px;
-  color: white;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 1.875rem;
+  padding: 10px;
+}
+
+p {
+  font-family: "Hedvig Letters Serif", serif;
+  font-size: 1rem;
+  padding: 6px;
 }
 
 .main_credits {
@@ -97,6 +106,372 @@ a:hover {
   text-align: center;
   width: 40%;
   margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #FFFFFF;
+}
+
+header {
+  background-color: #FFFFFF;
+  padding: 40px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Lilita One", sans-serif;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  height: 250px;
+  margin-right: auto;
+}
+
+.menu-icons {
+  display: flex;
+}
+
+.menu-icons a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 20px;
+  color: #000000;
+  font-size: 0.9em;
+}
+
+.menu-icons img {
+  height: 45px;
+  width: auto;
+  margin-right: 60px;
+}
+
+.menu-icons a:hover {
+  color: #970000;
+}
+
+.menu-icons a:hover img {
+  filter: brightness(0.8);
+}
+
+.game-section {
+  background: url(../img/header.png) no-repeat center center;
+  background-size: cover;
+  padding: 100px 0;
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+.login-section {
+  background: url(../img/header.png) no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  padding: 80px;
+  background-color: #ffffff;
+}
+
+.instructions-title {
+  color: black;
+  font-size: 2.5rem;
+  font-family: "Lilita One", sans-serif;
+  text-align: center;
+  padding-top: 90px;
+}
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 0;
+  margin: 0 15px;
+}
+
+.instruction-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C8B882;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.instruction-image-box img {
+  max-width: 70%;
+  height: 250px;
+  padding: 25px;
+  margin-top: 80px;
+}
+
+.instruction-text-box {
+  background-color: #464524;
+  border: 1px solid #cccccc;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 400px;
+  color: white;
+}
+
+.history-section {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 200px;
+  background-color: #43140C;
+}
+
+.history-box {
+  flex: 1;
+  padding: 95px;
+  margin-right: 100px;
+}
+
+.history-box h2, .history-box p, .history-box button {
+  color: #FFFFFF;
+  size: 1rem;
+}
+
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+footer {
+  background-color: black;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 50px solid #000000;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 150px;
+  width: auto;
+}
+
+.footer-icons {
+  display: flex;
+}
+
+.footer-icons .icon-link {
+  margin-left: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+.footer-icons img {
+  height: 40px;
+  width: auto;
+  filter: brightness(1);
+  transition: filter 0.3s ease;
+}
+
+.footer-icons .icon-link:focus {
+  outline: none;
+}
+
+.login-container {
+  position: absolute;
+  align-content: center;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1640px;
+  height: 1830px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 300px;
+  text-align: center;
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 2rem;
+  color: #000;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form h2 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  font-family: "Lilita One", sans-serif;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #000000;
+  color: #fff;
+  font-family: "Lilita One", sans-serif;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #cc0000;
+}
+
+.link {
+  text-decoration: none;
+  color: #000000;
+  font-family: "Lilita One", sans-serif;
+  font-size: 1rem;
+}
+
+.credits-section {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1640px;
+  height: 1830px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 300px;
+}
+
+.credits-container {
+  background-color: #FFFFFF;
+  max-width: 700px;
+  text-align: center;
+  display: flex; /* Asegurarse de que sea un contenedor flex */
+  flex-direction: column; /* Para alinear elementos en columna */
+  align-items: center; /* Centrar el contenido */
+  margin: 0; /* Asegurar que no haya márgenes que desplacen el contenedor */
+}
+
+.credits-container h2 {
+  font-family: "Lilita One", sans-serif;
+  margin-bottom: 20px;
+}
+
+.title-credits {
+  color: #000;
+  font-family: "Lilita One", sans-serif;
+  font-size: 1.875rem;
+}
+
+.title-text {
+  color: #000;
+  font-family: "Hedvig Letters Serif", serif;
+  font-size: 1.875rem;
+}
+
+.ranking-section {
+  position: absolute;
+  align-content: center;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1640px;
+  height: 1830px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 300px;
+  text-align: center;
+}
+
+.ranking-container {
+  background-color: #FFFFFF;
+  max-width: 700px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.ranking-table th, .ranking-table td {
+  border: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.ranking-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  font-family: "Lilita One", sans-serif; /* Sans-serif para títulos */
+  font-size: 2.5rem; /* Tamaño de fuente más grande para los títulos */
+}
+
+.ranking-table td {
+  font-family: "Hedvig Letters Serif", serif; /* Serif para subtítulos */
+  font-size: 1.875rem; /* Tamaño de fuente normal para subtítulos */
 }
 
 /*# sourceMappingURL=main.css.map */

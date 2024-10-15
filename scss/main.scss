@@ -1,58 +1,67 @@
 $ff-logo: 'October Twilight', sans-serif;
+$ff-title: "Lilita One", sans-serif;
+$ff-parrafo: "Hedvig Letters Serif", serif;
 $ff-menu:'Twisted Halloween PERSONAL', sans-serif;
-$crl-logo: #990000 ;
+
+$crl-logo: #990000;
 $crl-menu: #000000;
 $crl-title: #FFFFFF;
-$crl-main:#CCCC99;
+$crl-main: #CCCC99;
+$crl-low-green: #464524;
+
+$color-white: #FFFFFF; // Color blanco para usar en texto
+$color-black: #000000; // Color negro para usar en texto
+$color-light-gray: #cccccc; // Color gris claro para bordes
+$color-brown: #C8B882; // Color de fondo de la caja de imágenes
+
+$fs-xs: 0.760rem; //14
 $fs-nm: 1rem; //16
 $fs-xnm: 1.25rem; //20
 $fs-md: 1.875rem; //30
 $fs-xmd: 2.5rem; //40
 $fs-xxmd: 3.125rem; //50
 $fs-lg: 3.75rem; //60
-$fs-xl: 4rem; //70 4.375
-$fs-xxl: 5rem;//80
+$fs-xl: 4rem; //70
+$fs-xxl: 5rem; //80
 $fs-gt: 6.25rem; //100
-$fs-xgt: 7.5rem;//120
+$fs-xgt: 7.5rem; //120
 
-
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-.bodys-menu{
+.bodys-menu {
     background: url(../img/fondo.jpg) no-repeat center center;
     background-size: cover;
-    padding-top: 7rem;  
+    padding-top: 7rem;
 }
-h1{
- font-family:$ff-logo;
- color: $crl-logo;
-}
-h3{
-    font-family:$ff-menu;   
-    text-align: center;
-    font-size:$fs-md ;
-  
-}
-.p__title{
-    font-family:$ff-menu;
-    font-size:$fs-md;
-    text-align: center;
 
+h1 {
+    font-family: $ff-logo;
+    color: $crl-logo;
+}
 
+h3 {
+    font-family: $ff-title;
+    font-size: $fs-nm;
+    padding: 14px;
+}
+
+.p__title {
+    font-family: $ff-parrafo;
+    font-size: $fs-md;
+    text-align: center;
 }
 
 .logo {
     display: table;
-    margin:  auto; 
+    margin: auto;
 }
-.top-nav{
-   font-family: $ff-menu;
+
+.top-nav {
+    font-family: $ff-title;
     list-style-type: none;
     text-decoration: none;
     align-items: center;
@@ -60,65 +69,446 @@ h3{
     text-align: center;
 }
 
-.nav-list-link{
- 
-    font-size:$fs-xxmd;
+.nav-list-link {
+    font-size: $fs-xxmd;
     text-decoration: none;
-    color:$crl-menu;
+    color: $crl-menu;
     transition: all 0.3s ease;
-
 }
-.botton-nav{
- 
-    font-size:$fs-xxmd;
+
+.botton-nav {
+    font-size: $fs-xxmd;
     text-decoration: none;
-    color:$crl-menu;
+    color: $crl-menu;
     transition: all 0.3s ease;
+}
 
-}
-a:hover{
-    font-size: calc($fs-lg + 0.5rem);
-}
+
+
 .button {
     font-family: $ff-menu;
     padding: 1rem 2rem;
     transition: all 0.3s ease;
-    margin-left: 20px; 
+    margin-left: 20px;
     border: none;
-    background-color: transparent; 
-    font-size:$fs-xl ;
-   
-
- 
+    background-color: transparent;
+    font-size: $fs-xl;
 }
+
 .button:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-    color: white; 
+    background-color: rgba(255, 255, 255, 0.2);
+    color: $crl-title;
 }
 
-.main_controls{
+.main_controls {
     margin-top: 0;
-    background: url(../img/controles.png) no-repeat center; 
+    background: url(../img/controles.png) no-repeat center;
     padding-bottom: 30rem;
     background-size: contain;
 }
-.title{
-    font-size: $fs-lg;
+
+.title {
+    font-size: $ff-title;
     font-family: $ff-menu;
     text-align: center;
     padding-top: 0rem;
     margin-top: -180px;
-    color: white;
-    
-  
+    color: $crl-title;
 }
+
+h2 {
+    font-family: $ff-title;
+    font-size: $fs-md;
+    padding: 10px;
+}
+
+p {
+    font-family: $ff-parrafo;
+    font-size: $fs-nm;
+    padding: 6px;
+}
+
 .main_credits {
     background-color: $crl-main;
     border-radius: 10px;
-    padding: 8rem; 
+    padding: 8rem;
     text-align: center;
-    width: 40%; 
-    margin: 0 auto; 
+    width: 40%;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: $crl-title;
+}
+
+header {
+    background-color: $crl-title;
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $ff-title;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    height: 250px;
+    margin-right: auto;
+}
+
+.menu-icons {
+    display: flex;
+}
+
+.menu-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 20px;
+    color: $color-black;
+    font-size: 0.9em;
+}
+
+.menu-icons img {
+    height: 45px;
+    width: auto;
+    margin-right: 60px;
+}
+
+.menu-icons a:hover {
+    color: #970000;
+}
+
+.menu-icons a:hover img {
+    filter: brightness(0.8);
+}
+
+.game-section {
+    background: url(../img/header.png) no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+.login-section {
+    background: url(../img/header.png) no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+.instructions {
+    display: flex;
+    justify-content: center;
+    padding: 80px;
+    background-color: #ffffff;
+}
+.instructions-title {
+    color: black; 
+    font-size:$fs-xmd; 
+    font-family: $ff-title;
+    text-align: center; 
+    padding-top: 90px;
+
+}
+
+.instruction-item {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 0;
+    margin: 0 15px;
+}
+
+.instruction-image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C8B882;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.instruction-image-box img {
+   
+        max-width: 70%;
+        height: 250px;
+        padding: 25px;
+        margin-top: 80px;
+    
+
+}
+
+.instruction-text-box {
+    background-color: #464524;
+    border: 1px solid #cccccc;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    
+    flex-grow: 1;
+    height: 400px;
+    color: white;
+}
+.history-section {
+    display: flex;
+    text-align: left;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 200px;
+    background-color: #43140C;
+}
+
+.history-box {
+    flex: 1;
+    padding: 95px;
+    margin-right: 100px;
+}
+
+.history-box h2, .history-box p, .history-box button {
+    color: $color-white;
+    size: $fs-nm;
+}
+
+.image-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character-image {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: black;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 50px solid #000000;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 150px; 
+    width: auto;
+}
+
+.footer-icons {
+    display: flex;
+    
+}
+
+.footer-icons .icon-link {
+    margin-left: 10px;
+    color: $color-white;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+.footer-icons img {
+    height: 40px; 
+    width: auto; 
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+.footer-icons .icon-link:focus {
+    outline: none;
+}
+
+
+
+.login-container {
+    position: absolute;
+    align-content: center;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1640px;
+    height: 1830px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 300px;
+    text-align: center;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    color: #000;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    font-family: $ff-title;
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    font-size: 1rem;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    font-family: $ff-title;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #cc0000;
+}
+.link{
+    text-decoration: none;
+    color: $crl-menu;
+    font-family: $ff-title;
+    font-size: $fs-nm;
+}
+.credits-section {
+    position: absolute;
+    top: 50%;
+    right: 0; 
+    transform: translateY(-50%);
+    width: 1640px;
+    height: 1830px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: white;
+    padding: 300px;
+}
+
+.credits-container {
+    background-color: $crl-title; 
+ 
+    max-width: 700px; 
+    text-align: center; 
+    display: flex; /* Asegurarse de que sea un contenedor flex */
+    flex-direction: column; /* Para alinear elementos en columna */
+    align-items: center; /* Centrar el contenido */
+    margin: 0; /* Asegurar que no haya márgenes que desplacen el contenedor */
+}
+
+.credits-container h2 {
+    font-family: $ff-title;
+    margin-bottom: 20px; 
+}
+
+.title-credits{
+    color:#000;
+    font-family: $ff-title;
+    font-size:$fs-md ;
+}
+.title-text{
+    color:#000;
+    font-family: $ff-parrafo;
+    font-size:$fs-md ;
+}
+
+
+
+
+.ranking-section {
+    position: absolute;
+    align-content: center;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1640px;
+    height: 1830px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 300px;
+    text-align: center;
+}
+
+.ranking-container {
+    background-color: $crl-title; 
+    max-width: 700px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0; 
+    padding: 0 20px; 
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.ranking-table th, .ranking-table td {
+    border: none; 
+    padding: 10px;
+    text-align: center;
+}
+
+.ranking-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-family: $ff-title; /* Sans-serif para títulos */
+    font-size: $fs-xmd; /* Tamaño de fuente más grande para los títulos */
+}
+
+.ranking-table td {
+    font-family: $ff-parrafo; /* Serif para subtítulos */
+    font-size: $fs-md; /* Tamaño de fuente normal para subtítulos */
 }
 
 
