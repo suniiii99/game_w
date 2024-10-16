@@ -1,26 +1,44 @@
-// Create a new scene
 let gameScene = new Phaser.Scene('Game');
 
-// Initialize player parameters
-gameScene.init = function () {
-    this.playerSpeed = 300;
-    this.playerJump = -400; // Reduced jump height
 
-    // Floor coordinates
+// Inicializa los parámetros del jugador
+gameScene.init = function () {
+    this.playerSpeed = 500;//300
+    this.playerJump = -650; // Altura de salto reducida
+
+    // Coordenadas de los pisos
     this.floorCoordinates = [
         { x: 200, y: 650, type: 'floor_1' }, 
         { x: 950, y: 630, type: 'floor_3' }, 
         { x: 1400, y: 620, type: 'floor_3' },  
-        { x: 2150, y: 640, type: 'floor_1' }
+        { x: 2150, y: 640, type: 'floor_1' },
+        { x: 3200, y: 600, type: 'floor_1' }, 
+        { x: 4090, y: 620, type: 'floor_2' }, 
+        { x: 5350, y: 610, type: 'floor_1' }
     ];
 };
 
-// Load assets
+
+
+// Carga los recursos
 gameScene.preload = function () {
     this.loadAssets();
 };
 
-// Refactored asset loading function
+// Función refactorizada para cargar recursos
+gameScene.loadAssets = function () {
+    this.load.image('background', '../img/Fondo.png');
+    this.load.image('mid_layer', '../img/capa_medio.png');
+    this.load.image('player', '../img/personaje_animate.png');
+    this.load.image('floor_2', '../img/floor2.png');
+    this.load.image
+ }
+// Carga los recursos
+gameScene.preload = function () {
+    this.loadAssets();
+};
+
+// Función refactorizada para cargar recursos
 gameScene.loadAssets = function () {
     this.load.image('background', '../img/Fondo.png');
     this.load.image('mid_layer', '../img/capa_medio.png');
@@ -30,41 +48,46 @@ gameScene.loadAssets = function () {
     this.load.image('floor_3', '../img/floor3.png');
 };
 
-// Create game elements
+// Crea los elementos del juego
 gameScene.create = function () {
     this.setupBackground();
-    this.createPlayer();
-    this.setupWorldBounds();
     this.createFloors();
+    this.createPlayer();  // Crea al jugador sobre el primer piso
+    this.setupWorldBounds();
     this.setupCollisions();
     this.setupCamera();
     this.configureInput();
 };
 
-// Refactored background setup
+// Configuración del fondo
 gameScene.setupBackground = function () {
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(0, 0, 'mid_layer').setOrigin(0, 0);
 };
 
-// Refactored player creation
+// Creación del jugador
+// Creación del jugador
 gameScene.createPlayer = function () {
-    this.player = this.physics.add.sprite(100, this.background.height - 200, 'player');
-    this.player.setCollideWorldBounds(true);
+    const firstFloor = this.floorCoordinates[0]; 
+    const playerStartingX = firstFloor.x; 
+    const playerStartingY = firstFloor.y - 1000; // Ajuste para la posición inicial
 
-    // Ensure player has a dynamic body
-    this.player.body.setGravityY(200); // Set player gravity to match the game's gravity
+    // Crear el jugador exactamente sobre el primer piso
+    this.player = this.physics.add.sprite(playerStartingX, playerStartingY, 'player'); 
+    this.player.setCollideWorldBounds(true);
+    this.player.body.setGravityY(600); 
     this.player.body.setAllowGravity(true);
-    this.player.body.setBounce(0); // No bounce on landing
-    this.player.body.setVelocity(0, 0); // Reset velocity to prevent any initial movement
+    this.player.body.setBounce(0);
+    this.player.body.setOffset(0, -30); 
 };
 
-// Refactored world bounds setup
+
+// Configuración de los límites del mundo
 gameScene.setupWorldBounds = function () {
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
 };
 
-// Refactored floor creation
+// Creación de los pisos
 gameScene.createFloors = function () {
     this.floors = this.physics.add.staticGroup();
     this.floorCoordinates.forEach(({ x, y, type }) => {
@@ -72,27 +95,24 @@ gameScene.createFloors = function () {
     });
 };
 
-// Refactored collider setup
+// Configuración de las colisiones
 gameScene.setupCollisions = function () {
-    // Ensure the player collides with the floors
-    this.physics.add.collider(this.player, this.floors, () => {
-        console.log('Player has landed on a platform.');
-    });
+    this.physics.add.collider(this.player, this.floors);
 };
 
-// Refactored camera setup
+// Configuración de la cámara
 gameScene.setupCamera = function () {
     this.cameras.main.setBounds(0, 0, 5760, this.background.height);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
 };
 
-// Refactored input configuration
+// Configuración de la entrada
 gameScene.configureInput = function () {
     this.cursors = this.input.keyboard.createCursorKeys();
 };
 
-// Refactored input handling (formerly update)
+// Manejo de la entrada
 gameScene.handleInput = function () {
     if (!this.cursors) return;
 
@@ -107,7 +127,7 @@ gameScene.handleInput = function () {
     this.keepPlayerInBounds();
 };
 
-// Refactored player bounds checking
+// Verificación de límites del jugador
 gameScene.keepPlayerInBounds = function () {
     if (this.player.x < 0) {
         this.player.setPosition(0, this.player.y);
@@ -116,12 +136,12 @@ gameScene.keepPlayerInBounds = function () {
     }
 };
 
-// Update function
+// Función de actualización
 gameScene.update = function () {
     this.handleInput();
 };
 
-// Game configuration
+// Configuración del juego
 let config = {
     type: Phaser.AUTO,
     width: 1920,
@@ -131,11 +151,11 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }, // Adjusted global gravity
+            gravity: { y: 600 }, // Gravedad ajustada
             debug: false
         }
     }
 };
 
-// Create the game
+// Crear el juego
 let game = new Phaser.Game(config);
