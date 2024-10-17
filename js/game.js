@@ -1,10 +1,10 @@
+// Crea una nueva escena
 let gameScene = new Phaser.Scene('Game');
-
 
 // Inicializa los parámetros del jugador
 gameScene.init = function () {
-    this.playerSpeed = 500;//300
-    this.playerJump = -650; // Altura de salto reducida
+    this.playerSpeed = 300; // 300
+    this.playerJump = -490; // Altura de salto reducida
 
     // Coordenadas de los pisos
     this.floorCoordinates = [
@@ -12,27 +12,37 @@ gameScene.init = function () {
         { x: 950, y: 630, type: 'floor_3' }, 
         { x: 1400, y: 620, type: 'floor_3' },  
         { x: 2150, y: 640, type: 'floor_1' },
-        { x: 3200, y: 600, type: 'floor_1' }, 
-        { x: 4090, y: 620, type: 'floor_2' }, 
-        { x: 5350, y: 610, type: 'floor_1' }
+        { x: 3200, y: 634, type: 'floor_1' }, 
+        { x: 4090, y: 625, type: 'floor_2' }, 
+        { x: 5350, y: 630, type: 'floor_1' }
+    ];
+
+    // Coordenadas de las plataformas
+    this.platformCoordinates = [
+        { x: 730, y: 500, type: 'plataform' }, // Plataforma separada
+        { x: 1180, y: 500, type: 'plataform' }, // Plataforma separada
+        { x: 1600, y: 490, type: 'plataform' },
+        { x: 1400, y: 200, type: 'plataform2' },
+        { x: 1490, y: 300, type: 'plataform2' },
+        { x: 1700, y: 400, type: 'plataform2' }, // Plataforma separada
+        { x: 1880, y: 430, type: 'plataform2' }, // Plataforma separada
+        { x: 2600, y: 500, type: 'plataform' }, // Plataforma separada
+        { x: 2700, y: 400, type: 'plataform' }, // Plataforma separada
+        { x: 3800, y: 500, type: 'plataform' },//
+        { x: 3610, y: 490, type: 'plataform' },//
+
+        { x: 4450, y: 500, type: 'plataform2' },
+        { x: 4600, y: 450, type: 'plataform' },
+        { x: 4800, y: 500, type: 'plataform2' },
+
+        { x: 5200, y: 490, type: 'plataform' },
+        { x: 5300, y: 400, type: 'plataform2' },
+        { x: 5500, y: 480, type: 'plataform' },
+       
+
     ];
 };
 
-
-
-// Carga los recursos
-gameScene.preload = function () {
-    this.loadAssets();
-};
-
-// Función refactorizada para cargar recursos
-gameScene.loadAssets = function () {
-    this.load.image('background', '../img/Fondo.png');
-    this.load.image('mid_layer', '../img/capa_medio.png');
-    this.load.image('player', '../img/personaje_animate.png');
-    this.load.image('floor_2', '../img/floor2.png');
-    this.load.image
- }
 // Carga los recursos
 gameScene.preload = function () {
     this.loadAssets();
@@ -46,31 +56,18 @@ gameScene.loadAssets = function () {
     this.load.image('floor_2', '../img/floor2.png');
     this.load.image('floor_1', '../img/floor1.png');
     this.load.image('floor_3', '../img/floor3.png');
+    this.load.image('plataform', '../img/Plataforma.png');
+    this.load.image('plataform2', '../img/plataform2.png');
 };
 
 // Crea los elementos del juego
 gameScene.create = function () {
-    this.setupBackground();
-    this.createFloors();
-    this.createPlayer();  // Crea al jugador sobre el primer piso
-    this.setupWorldBounds();
-    this.setupCollisions();
-    this.setupCamera();
-    this.configureInput();
-};
-
-// Configuración del fondo
-gameScene.setupBackground = function () {
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(0, 0, 'mid_layer').setOrigin(0, 0);
-};
 
-// Creación del jugador
-// Creación del jugador
-gameScene.createPlayer = function () {
     const firstFloor = this.floorCoordinates[0]; 
     const playerStartingX = firstFloor.x; 
-    const playerStartingY = firstFloor.y - 1000; // Ajuste para la posición inicial
+    const playerStartingY = firstFloor.y - 1080; // Ajuste para la posición inicial
 
     // Crear el jugador exactamente sobre el primer piso
     this.player = this.physics.add.sprite(playerStartingX, playerStartingY, 'player'); 
@@ -78,13 +75,26 @@ gameScene.createPlayer = function () {
     this.player.body.setGravityY(600); 
     this.player.body.setAllowGravity(true);
     this.player.body.setBounce(0);
-    this.player.body.setOffset(0, -30); 
-};
+    this.player.body.setOffset(0, -15); 
 
-
-// Configuración de los límites del mundo
-gameScene.setupWorldBounds = function () {
+    // Configuración de los límites del mundo
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
+
+    // Crear pisos y plataformas
+    this.createFloors();
+    this.createPlatforms();
+
+    // Configuración de las colisiones
+    this.physics.add.collider(this.player, this.floors);
+    this.physics.add.collider(this.player, this.platforms);
+
+    // Configuración de la cámara
+    this.cameras.main.setBounds(0, 0, 5760, this.background.height);
+    this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
+    this.cameras.main.setZoom(config.height / this.background.height);
+
+    // Configuración de la entrada
+    this.cursors = this.input.keyboard.createCursorKeys();
 };
 
 // Creación de los pisos
@@ -95,21 +105,12 @@ gameScene.createFloors = function () {
     });
 };
 
-// Configuración de las colisiones
-gameScene.setupCollisions = function () {
-    this.physics.add.collider(this.player, this.floors);
-};
-
-// Configuración de la cámara
-gameScene.setupCamera = function () {
-    this.cameras.main.setBounds(0, 0, 5760, this.background.height);
-    this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
-    this.cameras.main.setZoom(config.height / this.background.height);
-};
-
-// Configuración de la entrada
-gameScene.configureInput = function () {
-    this.cursors = this.input.keyboard.createCursorKeys();
+// Creación de las plataformas
+gameScene.createPlatforms = function () {
+    this.platforms = this.physics.add.staticGroup();
+    this.platformCoordinates.forEach(({ x, y, type }) => {
+        this.platforms.create(x, y, type).refreshBody();
+    });
 };
 
 // Manejo de la entrada
@@ -144,8 +145,8 @@ gameScene.update = function () {
 // Configuración del juego
 let config = {
     type: Phaser.AUTO,
-    width: 1920,
-    height: 997,
+    width: window.innerWidth,
+    height: window.innerHeight,
     scene: gameScene,
     title: 'The flower witcher',
     physics: {
