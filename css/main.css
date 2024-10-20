@@ -7,7 +7,7 @@
 .bodys-menu {
   background: url(../img/fondo_menu.png) no-repeat center center;
   background-size: cover;
-  padding-top: 24rem;
+  padding-top: 37rem;
 }
 
 h1 {
@@ -94,7 +94,7 @@ h3 {
 
 .button:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .main_controls {
@@ -109,7 +109,7 @@ h3 {
   text-align: center;
   padding-top: 0rem;
   margin-top: -11.25rem;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 h2 {
@@ -131,7 +131,7 @@ p {
 }
 
 .main_credits {
-  background-color: #CCCC99;
+  background-color: #cccc99;
   border-radius: 10px;
   padding: 8rem;
   text-align: center;
@@ -142,7 +142,7 @@ p {
 body {
   margin: 0;
   font-family: "Arial", sans-serif;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .header_page {
@@ -247,7 +247,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #C8B882;
+  background-color: #c8b882;
   border: 1px solid #cccccc;
   padding: 0.625rem;
   margin-bottom: 0;
@@ -277,7 +277,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding: 60px;
-  background-color: #43140C;
+  background-color: #43140c;
 }
 
 .history-box {
@@ -287,13 +287,14 @@ body {
   margin: 1rem;
 }
 
-.history-box p, .history-box button {
-  color: #FFFFFF;
+.history-box p,
+.history-box button {
+  color: #ffffff;
   size: 1rem;
 }
 
 .history-box h2 {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.875rem;
   margin-bottom: 0.5rem;
 }
@@ -350,7 +351,7 @@ footer {
 
 .footer-icons .icon-link {
   margin-left: 0.625rem;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   color: inherit;
   font-size: inherit;
@@ -368,12 +369,12 @@ footer {
 
 .footer-text {
   font-size: 0.76rem;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-left: 0.625rem;
 }
 
 .footer-text a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -449,7 +450,7 @@ footer {
 }
 
 .credits-container {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-width: 43.75rem;
   text-align: center;
   display: flex;
@@ -513,7 +514,8 @@ footer {
   margin-top: 1.25rem;
 }
 
-.ranking-table th, .ranking-table td {
+.ranking-table th,
+.ranking-table td {
   border: none;
   padding: 0.625rem;
   text-align: center;
@@ -538,7 +540,7 @@ footer {
   .menu-icons {
     display: none;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     position: fixed;
     top: 134px;
     left: 0;
@@ -569,7 +571,7 @@ footer {
     content: "";
     display: block;
     height: 0.0625rem;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     width: 70%;
     margin: 0 auto;
     position: absolute;
@@ -657,7 +659,7 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    background-color: #43140C;
+    background-color: #43140c;
     width: 100%;
   }
   .image-box {
@@ -686,7 +688,7 @@ footer {
     margin-left: 40px;
   }
   .history-box p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 0.76rem;
     padding-top: 20px;
     margin-bottom: -4rem;
@@ -749,7 +751,7 @@ footer {
     min-height: 60vh;
   }
   .credits-container {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     max-width: 43.75rem;
     text-align: center;
     display: flex;
@@ -763,7 +765,8 @@ footer {
     margin-bottom: 0.5rem;
     font-size: 0.76rem;
   }
-  .title-credits, .title-text {
+  .title-credits,
+  .title-text {
     color: #000;
     font-family: "Hedvig Letters Serif", serif;
     font-size: 0.75rem;
@@ -775,9 +778,50 @@ footer {
     height: 450px;
     padding-top: 100px;
   }
-  .ranking-table th, .ranking-table td {
+  .ranking-table th,
+  .ranking-table td {
     padding: 0.4rem;
     font-size: 0.875rem;
+  }
+  .orientation-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 50, 101, 0.9);
+    z-index: 1000;
+    text-align: center;
+    font-size: 1.875rem;
+    font-family: "Lilita One", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+  .hidden {
+    display: none;
+  }
+  .background-blur {
+    filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* Just below the orientation message */
+  }
+  .bodys-menu {
+    background: url(../img/fondo_menu.png) no-repeat center center;
+    background-size: cover;
+    padding-top: 4rem;
+  }
+  .nav-list-link {
+    font-size: 2rem;
+    text-decoration: none;
+    font-family: "Lilita One", sans-serif;
+    color: #ffffff;
+    transition: all 0.3s ease;
   }
 }
 
