@@ -306,6 +306,7 @@ body {
     color: white;
 }
 
+
 .history-section {
     display: flex;
     text-align: left;
@@ -328,6 +329,18 @@ body {
     color: $color-white;
     font-size: $fs-md;
     margin-bottom: 0.5rem; // 10px
+}
+.link {
+    display: block; 
+    margin-top: 2rem;
+    text-align: center; 
+    color: #000000; 
+    text-decoration: none;
+    font-family: $ff-title;
+}
+
+.link:hover {
+    text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
 }
 
 
@@ -472,12 +485,6 @@ footer {
     background-color: #cc0000;
 }
 
-.link {
-    text-decoration: none;
-    color: $crl-menu;
-    font-family: $ff-title;
-    font-size: $fs-nm;
-}
 
 
 .credits-container {
@@ -565,78 +572,81 @@ footer {
 }
 @media (max-width: 576px) {
     * {
-        box-sizing: border-box; /* Incluye padding y borde en el ancho total */
-    }
-  .menu-icons {
-    display: none; // No se muestra inicialmente
-    flex-direction: column;
-    background-color: $color-white; // Fondo blanco
-    position: fixed; // Fijo en la pantalla
-    top: 134px; // Debajo de la barra superior
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 134px); // Ocupa el resto de la pantalla
-    z-index: 10; // Asegúrate de que esté por encima de otros elementos
-    overflow-y: auto; // Permitir desplazamiento interno si es necesario
-}
-
-.menu-icons.active {
-    display: flex; // Muestra el menú cuando está activo
-}
-
-body.menu-active {
-    position: fixed; // Bloquea el desplazamiento de la página
-    width: 100%; // Evita cambios de ancho
-    height: 100vh; // Ocupa toda la altura de la ventana
-    overflow: hidden; // Desactiva el desplazamiento
-}
+        box-sizing: border-box;
+    
+    
+    } 
 
     
-    .menu-icons a {
-        margin-top: 1.3rem;
-        font-size: 0.9em;
-        padding: 0.5rem 0 1.3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+    .menu-icons {
+        display: none; // No se muestra inicialmente
+        flex-direction: column;
+        background-color: $color-white; // Fondo blanco
+        position: fixed; // Fijo en la pantalla
+        top: 134px; // Debajo de la barra superior
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 134px); // Ocupa el resto de la pantalla
+        z-index: 10; // Asegúrate de que esté por encima de otros elementos
+        overflow-y: auto; // Permitir desplazamiento interno si es necesario
     }
     
-    .menu-icons a::after {
-        content: "";
-        display: block;
-        height: 0.0625rem;
-        background-color: $color-white;
-        width: 70%;
-        margin: 0 auto;
-        position: absolute;
-        bottom: 0;
-        left: 50%; // Centrado
-        transform: translateX(-50%);
+    .menu-icons.active {
+        display: flex; // Muestra el menú cuando está activo
     }
     
-    .menu-icons img {
-        height: 1.875rem; 
-        width: auto;
-        margin-right: 0.625rem; 
+    body.menu-active {
+        position: fixed; // Bloquea el desplazamiento de la página
+        width: 100%; // Evita cambios de ancho
+        height: 100vh; // Ocupa toda la altura de la ventana
+        overflow: hidden; // Desactiva el desplazamiento
     }
     
-    .menu-icons a:hover {
-        color: #970000;
-    }
-    
-    .menu-icons a:hover img {
-        filter: brightness(0.8);
-    }
-    
+        
+        .menu-icons a {
+            margin-top: 1.3rem;
+            font-size: 0.9em;
+            padding: 0.5rem 0 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .menu-icons a::after {
+            content: "";
+            display: block;
+            height: 0.0625rem;
+            background-color: $color-white;
+            width: 70%;
+            margin: 0 auto;
+            position: absolute;
+            bottom: 0;
+            left: 50%; // Centrado
+            transform: translateX(-50%);
+        }
+        
+        .menu-icons img {
+            height: 1.875rem; 
+            width: auto;
+            margin-right: 0.625rem; 
+        }
+        
+        .menu-icons a:hover {
+            color: #970000;
+        }
+        
+        .menu-icons a:hover img {
+            filter: brightness(0.8);
+        }
+        
     .header-content {
         padding: 0.1rem;
         margin: auto;
         text-align: center;
-        position: relative; 
-        z-index: 1;
-    }
-    
+        position: relative;
+        z-index: 1; 
+         }
     .game-section {
         background: url(../img/header.png) no-repeat center center;
         background-size: cover;
@@ -656,11 +666,6 @@ body.menu-active {
         width: 7rem;
         padding: 1rem;
         height: auto;
-    }
-
-    .menu-icons {
-        display: none; 
-        
     }
 
     .instructions-title {
@@ -781,8 +786,7 @@ body.menu-active {
         transform: translateX(-50%);
         width: 100%;
         padding: 3rem;
-        height: 42rem;
-      
+        height: 51rem;
     }
     .login-form {
         padding: 1rem;
@@ -840,6 +844,17 @@ body.menu-active {
         font-family: $ff-parrafo;
         font-size: 0.75rem; 
         margin: 0.25rem 0; 
+    }
+    .ranking-container {
+        max-width: 100%;
+        padding: 1rem;
+        height: 450px;
+        padding-top: 100px;
+    }
+    
+    .ranking-table th, .ranking-table td {
+        padding: 0.4rem; 
+        font-size: 0.875rem; 
     }
     
 
