@@ -550,40 +550,41 @@ footer {
   background-color: #f4f4f4;
   font-weight: bold;
   font-family: $ff-title;
-  font-size: $fs-nm; // Cambiado de $fs-md a $fs-xs
+  font-size: $fs-nm; 
 }
 
 .ranking-table td {
   font-family: $ff-parrafo;
   font-size: $fs-nm;
 }
+
 @media (max-width: 576px) {
   * {
     box-sizing: border-box;
   }
 
   .menu-icons {
-    display: none; // No se muestra inicialmente
+    display: none; 
     flex-direction: column;
-    background-color: $color-white; // Fondo blanco
-    position: fixed; // Fijo en la pantalla
-    top: 134px; // Debajo de la barra superior
+    background-color: $color-white; 
+    position: fixed;
+    top: 134px; 
     left: 0;
     width: 100vw;
-    height: calc(100vh - 134px); // Ocupa el resto de la pantalla
-    z-index: 10; // Asegúrate de que esté por encima de otros elementos
-    overflow-y: auto; // Permitir desplazamiento interno si es necesario
+    height: calc(100vh - 134px); 
+    z-index: 10; 
+    overflow-y: auto; 
   }
 
   .menu-icons.active {
-    display: flex; // Muestra el menú cuando está activo
+    display: flex; 
   }
 
   body.menu-active {
-    position: fixed; // Bloquea el desplazamiento de la página
-    width: 100%; // Evita cambios de ancho
-    height: 100vh; // Ocupa toda la altura de la ventana
-    overflow: hidden; // Desactiva el desplazamiento
+    position: fixed; 
+    width: 100%; 
+    height: 100vh; 
+    overflow: hidden;
   }
 
   .menu-icons a {
@@ -605,7 +606,7 @@ footer {
     margin: 0 auto;
     position: absolute;
     bottom: 0;
-    left: 50%; // Centrado
+    left: 50%; 
     transform: translateX(-50%);
   }
 
@@ -932,7 +933,344 @@ footer {
   
   }
 
+  @media (max-width: 767.98px) {
+    * {
+      box-sizing: border-box;
+    }
+  
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; // Evita el desbordamiento horizontal
+    }
+  
+    .menu-icons {
+      display: none; // No se muestra inicialmente
+      flex-direction: column;
+      background-color: $color-white; // Fondo blanco
+      position: fixed; // Fijo en la pantalla
+      top: 134px; // Debajo de la barra superior
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 134px); // Ocupa el resto de la pantalla
+      z-index: 10; // Asegúrate de que esté por encima de otros elementos
+      overflow-y: auto; // Permitir desplazamiento interno si es necesario
+    }
+  
+    .menu-icons.active {
+      display: flex; // Muestra el menú cuando está activo
+    }
+  
+    body.menu-active {
+      position: fixed; // Bloquea el desplazamiento de la página
+      width: 100%; // Evita cambios de ancho
+      height: 100vh; // Ocupa toda la altura de la ventana
+      overflow: hidden; // Desactiva el desplazamiento
+    }
+   
+    .menu-icons a {
+      margin: 1rem 0; // Espaciado vertical
+      font-size: $fs-nm; // Tamaño de fuente ajustado
+      padding: 0.5rem; // Padding vertical
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+  
+    .menu-icons a::after {
+      content: "";
+      display: block;
+      height: 0.0625rem;
+      width: 70%;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 50%; // Centrado
+      transform: translateX(-50%);
+    }
+  
+    .menu-icons img {
+      height: 1.875rem; // Tamaño del ícono
+      width: auto;
+      margin-right: 0.625rem;
+    }
+  
+    .menu-icons a:hover {
+      color: #970000;
+    }
+  
+    .menu-icons a:hover img {
+      filter: brightness(0.8);
+    }
+  
+    .header-content {
+      padding: 1rem; // Ajuste de padding
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+  
+    .game-section {
+      background: url(../img/header.png) no-repeat center center;
+      background-size: cover;
+      width: 100%;
+      height: 27rem;
+      margin: 0;
+  }
+  
+    .menu-hamburger {
+      display: block;
+      margin: 1rem;
+      margin-left: 5%; // Ajustado
+    }
+  
+    .header-logo {
+      width: 5rem; // Ajuste de tamaño
+      padding: 1rem;
+      height: auto;
+    }
+  
+    .instructions-title {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      padding-top: 20px; // Ajustado
+    }
+  
+    .instructions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+  
+    .instruction-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0rem;
+      margin-bottom: 2rem;
+      width: 90%; // Ajuste para pantallas pequeñas
+    }
+  
+    .p {
+      font-family: $ff-parrafo;
+      font-size: $fs-xs; // Tamaño de fuente ajustado
+      padding: 20px; // Ajustado
+      white-space: normal;
+      width: 100%;
+      transform-origin: left;
+    }
+  
+    .instruction-text-box {
+      background-color: #464524;
+      border: 1px solid #cccccc;
+      padding: 0.9375rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      height: auto; // Ajustado
+      color: white;
+    }
+  
+    .history-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      background-color: #43140c;
+      width: 100%;
+    }
+  
+    .image-box {
+      order: -1;
+      margin-bottom: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .character-image {
+      max-width: 70%;
+      height: auto;
+      padding: 1rem;
+    }
+  
+    .history-box {
+      flex: 1;
+      margin: 2rem; // Ajuste para pantallas pequeñas
+      text-align: left;
+      width: 100%;
+      padding: 0 1rem;
+    }
+  
+    .history-box h2 {
+      font-size: $fs-xs;
+      margin-top: 10px; // Ajustado
+      margin-bottom: 0.5rem;
+    }
+  
+    .history-box p {
+      color: #ffffff;
+      font-size: 0.75rem; // Tamaño de fuente ajustado
+      padding-top: 10px; // Ajustado
+    }
+  
+    footer {
+      padding: 1rem; // Ajuste de padding
+    }
+  
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+  
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .footer-icons .icon-link {
+      margin: 0 0.5rem;
+    }
+  
+    .login-container {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      padding: 2rem;
+      height: 100%;
+  }
+  
+    .login-form {
+      padding: 1rem;
+      max-width: 100%; // Ajustado
+      margin-top: -2rem;
+    }
+  
+    .login-form h2 {
+      font-size: $fs-nm; // Ajustado
+    }
+  
+    .login-form label {
+      font-size: $fs-xs; // Ajustado
+    }
+  
+    .login-form input {
+      font-size: $fs-xs; // Ajustado
+    }
+  
+    .login-form button {
+      width: 14rem;
+      font-size: 0.76rem;
+  }
+  
+  .credits-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    width: 102%;
+    height: 32rem;
+}
 
+.credits-container {
+    background-color: $crl-title;
+    max-width: 50%; // Mantener el tamaño más pequeño
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  .credits-container h2 {
+    font-family: $ff-title;
+    margin-bottom: 0.5rem;
+    font-size: $fs-xs; // Mantiene el tamaño de fuente
+  }
+  
+  .title-credits,
+  .title-text {
+    color: #000;
+    font-family: $ff-parrafo;
+    font-size: 0.75rem; // Mantiene el tamaño de fuente
+    margin: 0.25rem 0;
+  }
+  
+  
+  .ranking-container {
+    max-width: 100%;
+    padding: 1rem;
+    height: 34rem;
+}
+  
+    .ranking-table th,
+    .ranking-table td {
+      padding: 0.4rem;
+      font-size: 0.75rem; // Tamaño de fuente ajustado
+    }
+  
+    .orientation-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(16, 50, 101, 0.9);
+      z-index: 1000;
+      text-align: center;
+      font-size: $fs-md; // Ajustado
+      font-family: $ff-title;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+    }
+  
+    .background-blur {
+      filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999; /* Justo debajo del mensaje de orientación */
+    }
+  
+    .bodys-menu {
+      height: 100vh;
+    }
+  
+    .nav-list-link {
+      font-size: 1.5rem; // Ajustado
+      text-decoration: none;
+      font-family: "Lilita One", sans-serif;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+  
+    .logo, .top-nav {
+      display: none;
+    }
+  
+    .top-nav.active, .logo.active {
+      display: flex;
+    }
+  }
+  
 
 
 
