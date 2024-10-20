@@ -544,6 +544,15 @@ footer {
   * {
     box-sizing: border-box;
   }
+  .header_page {
+    padding: 1.5rem 1.125rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    font-family: "Lilita One", sans-serif;
+    height: 9rem;
+  }
   .menu-icons {
     display: none;
     flex-direction: column;
@@ -598,7 +607,7 @@ footer {
     filter: brightness(0.8);
   }
   .header-content {
-    padding: 0.1rem;
+    padding: 3rem;
     margin: auto;
     text-align: center;
     position: relative;
@@ -614,10 +623,14 @@ footer {
   }
   .menu-hamburger {
     display: block;
-    margin: 1rem;
-    margin-left: 10rem;
+    position: absolute;
+    top: 0rem;
+    right: 1rem;
   }
   .header-logo {
+    position: absolute;
+    top: 0rem;
+    left: 1rem;
     width: 7rem;
     padding: 1rem;
     height: auto;
@@ -780,10 +793,14 @@ footer {
     margin: 0.25rem 0;
   }
   .ranking-container {
-    max-width: 100%;
-    padding: 1rem;
-    height: 450px;
-    padding-top: 100px;
+    background-color: #ffffff;
+    max-width: 43.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
   }
   .ranking-table th,
   .ranking-table td {
@@ -825,7 +842,8 @@ footer {
     color: #ffffff;
     transition: all 0.3s ease;
   }
-  .logo, .top-nav {
+  .logo,
+  .top-nav {
     display: none;
   }
 }
@@ -946,11 +964,15 @@ footer {
   }
   .menu-hamburger {
     display: block;
-    margin: 1rem;
-    margin-left: 5%;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
   .header-logo {
-    width: 5rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    width: 7rem;
     padding: 1rem;
     height: auto;
   }
@@ -1151,11 +1173,21 @@ footer {
     color: #ffffff;
     transition: all 0.3s ease;
   }
-  .logo, .top-nav {
+  .logo,
+  .top-nav {
     display: none;
   }
-  .top-nav.active, .logo.active {
+  .top-nav.active,
+  .logo.active {
     display: flex;
+  }
+  .header-content {
+    padding: 1rem;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 3rem;
   }
 }
 
