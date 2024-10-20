@@ -32,6 +32,14 @@ $fs-xgt: 7.5rem; // 120
   padding: 0;
   box-sizing: border-box;
 }
+.title-history {
+  font-size:$fs-md;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: 25px;
+  color: #ffffff;
+  
+}
 .bodys-menu {
   background: url(../img/fondo_menu.png) no-repeat center center;
   background-size: cover;
@@ -738,11 +746,19 @@ footer {
     padding: 0 1rem;
   }
   .history-box h2 {
-    font-size: $fs-xs;
+    font-size:$fs-md;
     margin-top: 20px;
     margin-bottom: 0.5rem;
-    margin-left: 40px;
-  }
+    margin-left: 25px;
+}
+.title-history {
+  font-size:$fs-md;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: 25px;
+  color: #ffffff;
+  
+}
 
   .history-box p {
     color: #ffffff;
@@ -1030,7 +1046,7 @@ footer {
     margin: 0;
   }
 
-  .menu-hamburger {
+ .menu-hamburger {
     display: block;
     position: absolute;
     top: 1rem;  // Aumenta el valor de top para bajarlo
@@ -1126,10 +1142,10 @@ footer {
 
   .history-box p {
     color: #ffffff;
-    font-size: 0.75rem; // Tamaño de fuente ajustado
-    padding-top: 10px; // Ajustado
-  }
-
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: 0rem;
+}
   footer {
     padding: 1rem; // Ajuste de padding
   }

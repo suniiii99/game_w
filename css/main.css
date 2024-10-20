@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.title-history {
+  font-size: 1.875rem;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: 25px;
+  color: #ffffff;
+}
+
 .bodys-menu {
   background: url(../img/fondo_menu.png) no-repeat center center;
   background-size: cover;
@@ -702,10 +710,17 @@ footer {
     padding: 0 1rem;
   }
   .history-box h2 {
-    font-size: 0.76rem;
+    font-size: 1.875rem;
     margin-top: 20px;
     margin-bottom: 0.5rem;
-    margin-left: 40px;
+    margin-left: 25px;
+  }
+  .title-history {
+    font-size: 1.875rem;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 25px;
+    color: #ffffff;
   }
   .history-box p {
     color: #ffffff;
@@ -1046,8 +1061,9 @@ footer {
   }
   .history-box p {
     color: #ffffff;
-    font-size: 0.75rem;
-    padding-top: 10px;
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: 0rem;
   }
   footer {
     padding: 1rem;
