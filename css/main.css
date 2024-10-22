@@ -1109,8 +1109,11 @@ footer {
   .orientation-message .bodys-menu {
     height: 100vh;
   }
-  .orientation-message .logo,
-  .orientation-message .top-nav {
+  .orientation-message .bodys-menu.controls {
+    display: none;
+  }
+  .orientation-message .bodys-menu .logo,
+  .orientation-message .bodys-menu .top-nav {
     display: none;
   }
 }
@@ -1119,16 +1122,13 @@ footer {
   background: url(../img/fondo_menu.png) no-repeat center center;
   background-size: cover;
   padding-top: 5rem;
-  height: 100vh;
+  height: 113vh;
 }
 @media only screen and (max-width: 480px) {
   .bodys-menu {
     display: block;
   }
-  .bodys-menu.controls {
-    display: none;
-  }
-  .bodys-menu .logo {
+  .bodys-menu.logo {
     display: block;
     margin: 0 auto 2rem;
     width: 30%;
@@ -1154,9 +1154,6 @@ footer {
     transform: scale(1.1);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   }
-  .bodys-menu .nav-list-link .bodys-menu {
-    height: 100vh;
-  }
 }
 @media only screen and (max-width: 768px) {
   .bodys-menu {
@@ -1169,7 +1166,7 @@ footer {
     display: block;
     margin: 0 auto 2rem;
     width: 30%;
-    padding-top: 140px;
+    padding-top: 67px;
   }
   .bodys-menu .top-nav {
     font-family: "Lilita One", sans-serif;
@@ -1190,9 +1187,6 @@ footer {
     color: #000000;
     transform: scale(1.1);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  }
-  .bodys-menu .nav-list-link .bodys-menu {
-    height: 100vh;
   }
 }
 
