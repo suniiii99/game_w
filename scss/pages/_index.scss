@@ -1,0 +1,131 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  padding: 5rem; // 80px
+  background-color: #ffffff;
+  @include respond-to($phone) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px;
+  }
+  @include respond-to($tablet) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.instructions-title {
+  color: rgb(0, 0, 0);
+  font-size: $fs-xnm;
+  font-family: $ff-title;
+  text-align: center;
+  padding-top: 5.625rem;
+  @include respond-to($phone) {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 0;
+    padding-top: 40px;
+  }
+  @include respond-to($tablet) {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 20px; // Ajustado
+  }
+}
+
+.title-history {
+  font-size: 1.875rem;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: -7px;
+  color: #ffffff;
+  @include respond-to($phone) {
+    font-size: $fs-md;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 25px;
+    color: #ffffff;
+  }
+}
+.history-section {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px;
+  background-color: #43140c;
+  @include respond-to($phone) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    background-color: #43140c;
+    width: 100%;
+  }
+  @include respond-to($tablet) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background-color: #43140c;
+    width: 100%;
+  }
+}
+.history-box p {
+  color: $color-white;
+  size: $fs-nm;
+  @include respond-to($phone) {
+    color: #ffffff;
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: -4rem;
+  }
+  @include respond-to($tablet) {
+    color: #ffffff;
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: 0rem;
+  }
+}
+.history-box button {
+  color: $color-white;
+  size: $fs-nm;
+}
+.history-box h2 {
+  color: $color-white;
+  font-size: $fs-md;
+  margin-bottom: 0.5rem; // 10px
+  @include respond-to($phone) {
+    font-size: $fs-md;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 25px;
+  }
+  @include respond-to($tablet) {
+    font-size: $fs-xs;
+    margin-top: 10px; // Ajustado
+    margin-bottom: 0.5rem;
+  }
+}
+
+.character-image {
+  max-width: 40%;
+  height: auto;
+  border-radius: 0.625rem; // 10px
+  @include respond-to($phone) {
+    max-width: 49%;
+    height: auto;
+    padding: 1rem;
+  }
+  @include respond-to($tablet) {
+    max-width: 70%;
+    height: auto;
+    padding: 1rem;
+  }
+}

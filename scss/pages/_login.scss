@@ -1,0 +1,56 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.login-section {
+  background: url(../img/header.png) no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+.login-container {
+  position: absolute;
+  align-content: center;
+  top: 49%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 65rem;
+  height: 76rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 6.25rem;
+  text-align: center;
+
+  @include respond-to($phone) {
+    position: absolute;
+    top: 0.1%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 3rem;
+    height: 51rem;
+  }
+  @include respond-to($tablet) {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 2rem;
+    height: 100%;
+  }
+}
+.login-form h2 {
+  font-family: "Lilita One", sans-serif;
+  font-size: $fs-xnm;
+  text-align: center;
+  margin-bottom: 1.25rem; // 20px
+  @include respond-to($phone) {
+    font-size: $fs-nm;
+  }
+  @include respond-to($tablet) {
+    font-size: $fs-nm; // Ajustado
+  }
+}

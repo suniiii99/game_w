@@ -1,0 +1,112 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 0;
+  margin: 0 0.9375rem; // 15px
+  margin-bottom: 2rem;
+
+  // Eliminar duplicados
+  @include respond-to($phone) {
+    width: 100%; // O un valor ajustado que mantenga la proporcionalidad
+    margin-bottom: 2rem;
+  }
+  @include respond-to($tablet) {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+    margin-bottom: 2rem;
+    width: 90%; // Ajuste para pantallas pequeñas
+  }
+}
+
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include respond-to($phone) {
+    order: -1;
+    margin-bottom: 1rem;
+    width: 100%; // Asegura que ocupe el ancho completo en móviles
+  }
+  @include respond-to($tablet) {
+    order: -1;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.instruction-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c8b882;
+  border: 1px solid #cccccc;
+  padding: 0.625rem; // 10px
+  margin-bottom: 0;
+  width: 100%; // Asegúrate de que esta caja ocupe el ancho disponible
+}
+
+.instruction-image-box img {
+  max-width: 94%;
+  height: 8.75rem;
+  padding: 0.9375rem;
+  margin-top: 2.5rem;
+}
+
+.instruction-text-box {
+  background-color: #464524;
+  border: 1px solid #cccccc; // Corregido para evitar un borde negativo
+  padding: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 19.5rem;
+  color: white;
+
+  @include respond-to($phone) {
+    height: 17rem; // Mantener el ajuste de altura
+  }
+  @include respond-to($tablet) {
+    background-color: #464524;
+    border: 1px solid #cccccc;
+    padding: 0.9375rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: auto; // Ajustado
+    color: white;
+  }
+}
+
+.history-box {
+  flex: 1;
+  padding-right: 19rem;
+  padding-left: 10rem;
+  margin: 1rem;
+
+  @include respond-to($phone) {
+    flex: 1;
+    margin: 4rem;
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  @include respond-to($tablet) {
+    flex: 1;
+    margin: 2rem; // Ajuste para pantallas pequeñas
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}

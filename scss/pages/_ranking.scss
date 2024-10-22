@@ -1,0 +1,90 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.ranking-container {
+  position: absolute;
+  align-content: center;
+  top: 49%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 65rem;
+  height: 76rem; // Altura original
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 6.25rem;
+  text-align: center;
+
+  @include respond-to($phone) {
+    background-color: $crl-title;
+    max-width: 43.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+    height: 28rem; // Ajusta la altura en responsive a 50rem (o el valor que necesites)
+  }
+  @include respond-to($tablet) {
+    max-width: 100%;
+    padding: 1rem;
+    height: 34rem;
+  }
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.25rem; // 20px
+
+  @include respond-to($phone) {
+    background-color: #ffffff;
+    max-width: 29.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+    height: 9rem;
+    margin-left: 19rem;
+  }
+  @include respond-to($tablet) {
+    padding: 0.4rem;
+    font-size: 0.75rem; // Tamaño de fuente ajustado
+  }
+}
+
+.title-ranking {
+  font-size: $fs-md;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: 17.188rem;
+  color: #000000;
+  font-family: $ff-title;
+}
+.ranking-table th,
+.ranking-table td {
+  border: none;
+  padding: 0.625rem; // 10px
+  text-align: center;
+
+  @include respond-to($phone) {
+    padding: 0.4rem;
+    font-size: 0.875rem;
+  }
+}
+
+.ranking-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  font-family: $ff-title;
+  font-size: $fs-nm;
+}
+
+.ranking-table td {
+  font-family: $ff-parrafo;
+  font-size: $fs-nm;
+}

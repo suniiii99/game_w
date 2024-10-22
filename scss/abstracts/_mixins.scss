@@ -1,0 +1,11 @@
+$phone: "(max-width: 480px)";
+$tablet: "(max-width: 768px)";
+$phone-tablet-portrait-landscape: "(max-width: 900px) and (orientation: landscape)";
+$tablet-landscape: "(max-width: 1024px) and (min-width: 901px) and (orientation: landscape)";
+$large-desktop: "(max-width: 1700px) and (min-width: 1025px)";
+
+@mixin respond-to($media) {
+  @media only screen and #{$media} {
+    @content;
+  }
+}

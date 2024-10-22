@@ -1,0 +1,81 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.menu-icons {
+  display: flex;
+}
+
+.menu-icons a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 1.25rem; // 20px
+  color: $color-black;
+  font-size: 0.9rem;
+  @include respond-to($phone) {
+    display: none;
+    flex-direction: column;
+    background-color: $color-white;
+    position: fixed;
+    top: 134px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 134px);
+    z-index: 10;
+    overflow-y: auto;
+  }
+}
+
+.menu-icons img {
+  height: 2.875rem;
+  width: auto;
+  margin-right: 0.625rem;
+  @include respond-to($phone) {
+    height: 1.875rem;
+    width: auto;
+    margin-right: 0.625rem;
+  }
+}
+
+.menu-icons a:hover {
+  color: #970000;
+}
+
+.menu-icons a:hover img {
+  filter: brightness(0.8);
+}
+
+.footer-icons {
+  display: flex;
+  @include respond-to($phone) {
+    display: flex;
+    justify-content: center;
+  }
+  @include respond-to($tablet) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.footer-icons .icon-link {
+  margin-left: 0.625rem; // 10px
+  color: $color-white;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  @include respond-to($phone) {
+    margin: 0 0.5rem;
+  }
+  @include respond-to($tablet) {
+    margin: 0 0.5rem;
+  }
+}
+
+.footer-icons img {
+  height: 2rem;
+  width: auto;
+  filter: brightness(1.2);
+}
+
+.footer-icons .icon-link:hover img {
+  filter: brightness(0.8);
+}

@@ -1,11 +1,17 @@
 function toggleMenu() {
     const navLinks = document.querySelector('.menu-icons');
+    const content = document.querySelector('.content');
+    const footer = document.querySelector('.footer');
+
 
     navLinks.classList.toggle('active');
 
+
     if (navLinks.classList.contains('active')) {
-        document.body.classList.add('menu-active'); // Bloquea el movimiento del fondo
+        content.classList.add('hidden');
+        footer.classList.add('hidden');
     } else {
-        document.body.classList.remove('menu-active'); // Permite el movimiento nuevamente
+        content.classList.remove('hidden');
+        footer.classList.remove('hidden');
     }
 }

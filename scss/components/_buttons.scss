@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.button {
+  font-size: 3.125rem;
+  padding: 0.5rem 1rem;
+  margin-left: 25rem;
+  color: #ffffff;
+  font-family: "Lilita One", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: $crl-title;
+}
+
+.login-form button {
+  width: 15.625rem; // 250px
+  height: auto;
+  padding: 0.625rem 1.25rem; // 10px 20px
+  border: none;
+  background-color: #000000;
+  color: #fff;
+  font-family: "Lilita One", sans-serif;
+  font-size: $fs-nm;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  @include respond-to($tablet) {
+    width: 14rem;
+    font-size: 0.76rem;
+  }
+}
+
+.login-form button:hover {
+  background-color: #cc0000;
+}

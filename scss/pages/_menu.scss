@@ -1,0 +1,83 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.orientation-message {
+  display: none;
+  @include respond-to($phone) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 50, 101, 0.9);
+    z-index: 1000;
+    text-align: center;
+    font-size: $fs-md;
+    font-family: $ff-title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    &.background-blur {
+      filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999; /* Just below the orientation message */
+    }
+    .bodys-menu {
+      height: 100vh;
+    }
+    .logo,
+    .top-nav {
+      display: none;
+    }
+  }
+
+  
+}
+.bodys-menu {
+  background: url(../img/fondo_menu.png) no-repeat center center;
+  background-size: cover;
+  padding-top: 5rem;
+  height: 69rem;
+
+  @include respond-to($phone) {
+    display: block; // Asegúrate de que esté visible en móviles
+    
+    &.controls {
+      display: none;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 2rem;
+      width: 20%;
+      padding-top: 60px;
+    }
+    .top-nav {
+      font-family: $ff-title;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-list-link {
+      font-size: $fs-xnm;
+      text-decoration: none;
+      font-family: $ff-title;
+      color: $crl-menu;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $crl-hover;
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+  
+  
+}

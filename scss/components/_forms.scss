@@ -1,0 +1,45 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.login-form {
+  background-color: #ffffff;
+  padding: 2rem;
+  color: #000;
+  width: 100%;
+  max-width: 25rem; // 400px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include respond-to($phone) {
+    padding: 1rem;
+    max-width: 90%;
+    margin-top: -2rem;
+  }
+  @include respond-to($tablet) {
+    padding: 1rem;
+    max-width: 100%; // Ajustado
+    margin-top: -2rem;
+  }
+}
+.login-form label {
+  font-family: $ff-title;
+  font-size: $fs-nm;
+  display: block;
+  margin-bottom: 0.3125rem; // 5px
+  @include respond-to($phone) {
+    font-size: $fs-xs;
+  }
+  @include respond-to($tablet) {
+    font-size: $fs-xs; // Ajustado
+  }
+}
+
+.login-form input {
+  padding: 0.625rem; // 10px
+  margin-bottom: 1.25rem; // 20px
+  border: 1px solid #cccccc;
+  font-size: 1rem;
+  @include respond-to($phone) {
+    font-size: $fs-xs;
+  }
+}

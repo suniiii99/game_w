@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @include respond-to($phone) {
+    box-sizing: border-box;
+  }
+  @include respond-to($tablet) {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: $crl-title;
+
+  @include respond-to($phone) {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+.bodys-menu {
+  background: url(/img/fondo_menu.png) no-repeat center center;
+  background-size: cover;
+  padding-top: 5rem;
+  height: 69rem;
+}

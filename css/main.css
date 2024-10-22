@@ -1,20 +1,34 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+@media only screen and (max-width: 480px) {
+  * {
+    box-sizing: border-box;
+  }
+}
+@media only screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+}
 
-.title-history {
-  font-size: 1.875rem;
-  margin-top: 20px;
-  margin-bottom: 0.5rem;
-  margin-left: 25px;
-  color: #ffffff;
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 480px) {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 }
 
 .bodys-menu {
-  background: url(../img/fondo_menu.png) no-repeat center center;
+  background: url(/img/fondo_menu.png) no-repeat center center;
   background-size: cover;
   padding-top: 5rem;
   height: 69rem;
@@ -31,14 +45,369 @@ h3 {
   padding: 0.875rem;
 }
 
+p {
+  font-family: "Hedvig Letters Serif", serif;
+  font-size: 1rem;
+  padding: 0.375rem;
+}
+
 .p__title {
   font-family: "Hedvig Letters Serif", serif;
   font-size: 1.875rem;
   text-align: center;
 }
 
-.menu-hamburger {
-  display: none;
+.p {
+  font-family: "Hedvig Letters Serif", serif;
+  font-size: 1rem;
+  padding: 0.375rem;
+}
+@media only screen and (max-width: 480px) {
+  .p {
+    font-family: "Hedvig Letters Serif", serif;
+    font-size: 0.76rem;
+    padding: 40px;
+    padding-bottom: -40px;
+    padding-right: 20px;
+    white-space: normal;
+    width: 100%;
+    transform-origin: left;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .p {
+    font-family: "Hedvig Letters Serif", serif;
+    font-size: 0.76rem;
+    padding: 20px;
+    white-space: normal;
+    width: 100%;
+    transform-origin: left;
+  }
+}
+
+.button {
+  font-size: 3.125rem;
+  padding: 0.5rem 1rem;
+  margin-left: 25rem;
+  color: #ffffff;
+  font-family: "Lilita One", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.login-form button {
+  width: 15.625rem;
+  height: auto;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  background-color: #000000;
+  color: #fff;
+  font-family: "Lilita One", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .login-form button {
+    width: 14rem;
+    font-size: 0.76rem;
+  }
+}
+
+.login-form button:hover {
+  background-color: #cc0000;
+}
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 0;
+  margin: 0 0.9375rem;
+  margin-bottom: 2rem;
+}
+@media only screen and (max-width: 480px) {
+  .instruction-item {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .instruction-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+    margin-bottom: 2rem;
+    width: 90%;
+  }
+}
+
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 480px) {
+  .image-box {
+    order: -1;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .image-box {
+    order: -1;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.instruction-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c8b882;
+  border: 1px solid #cccccc;
+  padding: 0.625rem;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.instruction-image-box img {
+  max-width: 94%;
+  height: 8.75rem;
+  padding: 0.9375rem;
+  margin-top: 2.5rem;
+}
+
+.instruction-text-box {
+  background-color: #464524;
+  border: 1px solid #cccccc;
+  padding: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 19.5rem;
+  color: white;
+}
+@media only screen and (max-width: 480px) {
+  .instruction-text-box {
+    height: 17rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .instruction-text-box {
+    background-color: #464524;
+    border: 1px solid #cccccc;
+    padding: 0.9375rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: auto;
+    color: white;
+  }
+}
+
+.history-box {
+  flex: 1;
+  padding-right: 19rem;
+  padding-left: 10rem;
+  margin: 1rem;
+}
+@media only screen and (max-width: 480px) {
+  .history-box {
+    flex: 1;
+    margin: 4rem;
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .history-box {
+    flex: 1;
+    margin: 2rem;
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+.menu-icons {
+  display: flex;
+}
+
+.menu-icons a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 1.25rem;
+  color: #000000;
+  font-size: 0.9rem;
+}
+@media only screen and (max-width: 480px) {
+  .menu-icons a {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: fixed;
+    top: 134px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 134px);
+    z-index: 10;
+    overflow-y: auto;
+  }
+}
+
+.menu-icons img {
+  height: 2.875rem;
+  width: auto;
+  margin-right: 0.625rem;
+}
+@media only screen and (max-width: 480px) {
+  .menu-icons img {
+    height: 1.875rem;
+    width: auto;
+    margin-right: 0.625rem;
+  }
+}
+
+.menu-icons a:hover {
+  color: #970000;
+}
+
+.menu-icons a:hover img {
+  filter: brightness(0.8);
+}
+
+.footer-icons {
+  display: flex;
+}
+@media only screen and (max-width: 480px) {
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.footer-icons .icon-link {
+  margin-left: 0.625rem;
+  color: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+@media only screen and (max-width: 480px) {
+  .footer-icons .icon-link {
+    margin: 0 0.5rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer-icons .icon-link {
+    margin: 0 0.5rem;
+  }
+}
+
+.footer-icons img {
+  height: 2rem;
+  width: auto;
+  filter: brightness(1.2);
+}
+
+.footer-icons .icon-link:hover img {
+  filter: brightness(0.8);
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 2rem;
+  color: #000;
+  width: 100%;
+  max-width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 480px) {
+  .login-form {
+    padding: 1rem;
+    max-width: 90%;
+    margin-top: -2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-form {
+    padding: 1rem;
+    max-width: 100%;
+    margin-top: -2rem;
+  }
+}
+
+.login-form label {
+  font-family: "Lilita One", sans-serif;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.3125rem;
+}
+@media only screen and (max-width: 480px) {
+  .login-form label {
+    font-size: 0.76rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-form label {
+    font-size: 0.76rem;
+  }
+}
+
+.login-form input {
+  padding: 0.625rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #cccccc;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 480px) {
+  .login-form input {
+    font-size: 0.76rem;
+  }
+}
+
+.game-section {
+  background: url(../img/header.png) no-repeat center center;
+  background-size: cover;
+  padding: 6.25rem 0;
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+@media only screen and (max-width: 480px) {
+  .game-section {
+    background: url(../img/header.png) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 26rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .header_menu {
@@ -53,6 +422,282 @@ h3 {
   padding-top: 250px;
 }
 
+.header_page {
+  padding: 1.5rem 1.125rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  font-family: "Lilita One", sans-serif;
+  height: 17rem;
+}
+@media only screen and (max-width: 480px) {
+  .header_page {
+    flex-direction: column;
+    padding: 1rem;
+    height: auto;
+    margin-top: -2rem;
+  }
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  font-family: "Lilita One", sans-serif;
+}
+@media only screen and (max-width: 480px) {
+  .header-content {
+    padding: 8rem;
+    margin: -5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.header-logo {
+  height: 9.375rem;
+}
+@media only screen and (max-width: 480px) {
+  .header-logo {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    width: 7rem;
+    padding: 0.5rem;
+    height: auto;
+  }
+}
+
+footer {
+  background-color: black;
+  padding: 2.5rem 3.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 3.125rem solid #000000;
+}
+@media only screen and (max-width: 480px) {
+  footer {
+    padding: 2rem 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  footer {
+    padding: 1rem;
+  }
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+@media only screen and (max-width: 480px) {
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer-logo {
+  height: 7.5rem;
+}
+@media only screen and (max-width: 480px) {
+  .footer-logo {
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer-logo {
+    margin-bottom: 1rem;
+  }
+}
+
+.footer-text {
+  font-size: 0.76rem;
+  color: #ffffff;
+  margin-left: 0.625rem;
+}
+
+.top-nav {
+  font-family: "Lilita One", sans-serif;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+@media only screen and (max-width: 480px) {
+  .top-nav {
+    display: none;
+  }
+}
+.top-nav .nav-list-link {
+  font-size: 3.125rem;
+  text-decoration: none;
+  font-family: "Lilita One", sans-serif;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.top-nav .nav-list-link:hover {
+  color: #000000;
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+@media only screen and (max-width: 480px) {
+  .top-nav .nav-list-link {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .menu-icons {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    overflow-y: auto;
+  }
+  .menu-icons.active {
+    display: flex;
+  }
+  .menu-icons a {
+    margin-top: 1.6rem;
+    font-size: 1rem;
+    padding: 0.5rem 0 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+  }
+  .menu-icons a::after {
+    content: "";
+    display: block;
+    height: 0.0625rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .menu-icons img.icons {
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .menu-icons img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .menu-icons {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    overflow-y: auto;
+  }
+  .menu-icons.active {
+    display: flex;
+  }
+  .menu-icons a {
+    margin-top: 4.6rem;
+    font-size: 1rem;
+    padding: 0.5rem 0 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+  }
+  .menu-icons .menu-icons a::after {
+    content: "";
+    display: block;
+    height: 0.0625rem;
+    width: 70%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .menu-icons .menu-icons img {
+    height: 1.875rem;
+    width: auto;
+    margin-right: 0.625rem;
+  }
+  .menu-icons .menu-icons a:hover {
+    color: #970000;
+  }
+  .menu-icons .menu-icons a:hover img {
+    filter: brightness(0.8);
+  }
+}
+
+.menu-hamburger {
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .menu-hamburger {
+    display: block;
+    position: absolute;
+    top: 0rem;
+    right: 2rem;
+    z-index: 20;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .menu-hamburger {
+    display: block;
+    position: absolute;
+    top: 7rem;
+    right: 5rem;
+    z-index: 20;
+    overflow: hidden;
+  }
+}
+
+.link {
+  display: block;
+  margin-top: 2rem;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  font-family: "Lilita One", sans-serif;
+}
+
+.link:hover {
+  text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
+}
+
+.footer-text a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
 .title-controls {
   font-size: 3.75rem;
   text-align: center;
@@ -64,48 +709,6 @@ h3 {
   display: block;
   margin: 0 auto;
   max-width: 100%;
-}
-
-.top-nav {
-  font-family: "Lilita One", sans-serif;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.nav-list-link {
-  font-size: 3.125rem;
-  text-decoration: none;
-  font-family: "Lilita One", sans-serif;
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
-.nav-list-link:hover {
-  color: #000000;
-  transform: scale(1.1);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
-.button {
-  font-size: 3.125rem;
-  padding: 0.5rem 1rem;
-  margin-left: 25rem;
-  color: #ffffff;
-  font-family: "Lilita One", sans-serif;
-  text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.image-controls {
-  max-width: 100%;
-}
-
-.button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
 }
 
 .main_controls {
@@ -123,24 +726,6 @@ h3 {
   color: #ffffff;
 }
 
-h2 {
-  font-family: "Lilita One", sans-serif;
-  font-size: 1.875rem;
-  padding: 0px;
-}
-
-p {
-  font-family: "Hedvig Letters Serif", serif;
-  font-size: 0.76rem;
-  padding: 0.375rem;
-}
-
-.p {
-  font-family: "Hedvig Letters Serif", serif;
-  font-size: 0.76rem;
-  padding: 0.375rem;
-}
-
 .main_credits {
   background-color: #cccc99;
   border-radius: 10px;
@@ -148,320 +733,6 @@ p {
   text-align: center;
   width: 40%;
   margin: 0 auto;
-}
-
-body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #ffffff;
-}
-
-.header_page {
-  padding: 1.5rem 1.125rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Lilita One", sans-serif;
-}
-
-.header_menu {
-  padding: 3.5rem 3.125rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Lilita One", sans-serif;
-}
-
-.header-content {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  font-family: "Lilita One", sans-serif;
-}
-
-.header-logo {
-  height: 9.375rem;
-}
-
-.menu-icons {
-  display: flex;
-}
-
-.menu-icons a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  margin-left: 1.25rem;
-  color: #000000;
-  font-size: 0.9em;
-}
-
-.menu-icons img {
-  height: 1.875rem;
-  width: auto;
-  margin-right: 0.625rem;
-}
-
-.menu-icons a:hover {
-  color: #970000;
-}
-
-.menu-icons a:hover img {
-  filter: brightness(0.8);
-}
-
-.game-section {
-  background: url(../img/header.png) no-repeat center center;
-  background-size: cover;
-  padding: 6.25rem 0;
-  margin: 0;
-  height: 100vh;
-  text-align: center;
-  position: relative;
-}
-
-.login-section {
-  background: url(../img/header.png) no-repeat center center;
-  background-size: cover;
-  margin: 0;
-  height: 100vh;
-  text-align: center;
-  position: relative;
-}
-
-.instructions {
-  display: flex;
-  justify-content: center;
-  padding: 5rem;
-  background-color: #ffffff;
-}
-
-.instructions-title {
-  color: black;
-  font-size: 1.25rem;
-  font-family: "Lilita One", sans-serif;
-  text-align: center;
-  padding-top: 5.625rem;
-}
-
-.instruction-item {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 0;
-  margin: 0 0.9375rem;
-}
-
-.instruction-image-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #c8b882;
-  border: 1px solid #cccccc;
-  padding: 0.625rem;
-  margin-bottom: 0;
-}
-
-.instruction-image-box img {
-  max-width: 60%;
-  height: 8.75rem;
-  padding: 0.9375rem;
-  margin-top: 2.5rem;
-}
-
-.instruction-text-box {
-  background-color: #464524;
-  border: 1px solid #cccccc;
-  padding: 0.9375rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 12.5rem;
-  color: white;
-}
-
-.history-section {
-  display: flex;
-  text-align: left;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 60px;
-  background-color: #43140c;
-}
-
-.history-box {
-  flex: 1;
-  padding-right: 19rem;
-  padding-left: 10rem;
-  margin: 1rem;
-}
-
-.history-box p,
-.history-box button {
-  color: #ffffff;
-  size: 1rem;
-}
-
-.history-box h2 {
-  color: #ffffff;
-  font-size: 1.875rem;
-  margin-bottom: 0.5rem;
-}
-
-.link {
-  display: block;
-  margin-top: 2rem;
-  text-align: center;
-  color: #000000;
-  text-decoration: none;
-  font-family: "Lilita One", sans-serif;
-}
-
-.link:hover {
-  text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
-}
-
-.image-box {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.character-image {
-  max-width: 40%;
-  height: auto;
-  border-radius: 0.625rem;
-}
-
-footer {
-  background-color: black;
-  padding: 2.5rem 3.75rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 3.125rem solid #000000;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-}
-
-.footer-logo {
-  height: 7.5rem;
-}
-
-.footer-icons {
-  display: flex;
-}
-
-.footer-icons .icon-link {
-  margin-left: 0.625rem;
-  color: #ffffff;
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
-}
-
-.footer-icons img {
-  height: 2rem;
-  width: auto;
-  filter: brightness(1.2);
-}
-
-.footer-icons .icon-link:hover img {
-  filter: brightness(0.8);
-}
-
-.footer-text {
-  font-size: 0.76rem;
-  color: #ffffff;
-  margin-left: 0.625rem;
-}
-
-.orientation-message {
-  display: none;
-}
-
-.footer-text a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.footer-text a:hover {
-  text-decoration: underline;
-}
-
-.login-container {
-  position: absolute;
-  align-content: center;
-  top: 49%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 65rem;
-  height: 76rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  padding: 6.25rem;
-  text-align: center;
-}
-
-.login-form {
-  background-color: #ffffff;
-  padding: 2rem;
-  color: #000;
-  width: 100%;
-  max-width: 25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form h2 {
-  font-family: "Lilita One", sans-serif;
-  font-size: 1.25rem;
-  text-align: center;
-  margin-bottom: 1.25rem;
-}
-
-.login-form label {
-  font-family: "Lilita One", sans-serif;
-  font-size: 1rem;
-  display: block;
-  margin-bottom: 0.3125rem;
-}
-
-.login-form input {
-  padding: 0.625rem;
-  margin-bottom: 1.25rem;
-  border: 1px solid #cccccc;
-  font-size: 1rem;
-}
-
-.login-form button {
-  width: 15.625rem;
-  height: auto;
-  padding: 0.625rem 1.25rem;
-  border: none;
-  background-color: #000000;
-  color: #fff;
-  font-family: "Lilita One", sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-}
-
-.login-form button:hover {
-  background-color: #cc0000;
 }
 
 .credits-container {
@@ -473,22 +744,70 @@ footer {
   align-items: center;
   margin: 0;
 }
+@media only screen and (max-width: 480px) {
+  .credits-container {
+    background-color: #ffffff;
+    max-width: 43.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .credits-container {
+    background-color: #ffffff;
+    max-width: 50%;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 .credits-container h2 {
   font-family: "Lilita One", sans-serif;
   margin-bottom: 1.25rem;
 }
-
-.title-credits {
-  color: #000;
-  font-family: "Lilita One", sans-serif;
-  font-size: 1.875rem;
+@media only screen and (max-width: 480px) {
+  .credits-container h2 {
+    font-family: "Lilita One", sans-serif;
+    margin-bottom: 0.5rem;
+    font-size: 0.76rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .credits-container h2 {
+    font-family: "Lilita One", sans-serif;
+    margin-bottom: 0.5rem;
+    font-size: 0.76rem;
+  }
 }
 
 .title-text {
   color: #000;
   font-family: "Hedvig Letters Serif", serif;
   font-size: 1.875rem;
+}
+@media only screen and (max-width: 480px) {
+  .title-text {
+    color: #000;
+    font-family: "Hedvig Letters Serif", serif;
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .title-text {
+    color: #000;
+    font-family: "Hedvig Letters Serif", serif;
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
+  }
 }
 
 .credits-section {
@@ -506,6 +825,336 @@ footer {
   padding: 6.25rem;
   text-align: center;
 }
+@media only screen and (max-width: 480px) {
+  .credits-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+    height: auto;
+    min-height: 60vh;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .credits-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    width: 102%;
+    height: 32rem;
+  }
+}
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  padding: 5rem;
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 480px) {
+  .instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.instructions-title {
+  color: rgb(0, 0, 0);
+  font-size: 1.25rem;
+  font-family: "Lilita One", sans-serif;
+  text-align: center;
+  padding-top: 5.625rem;
+}
+@media only screen and (max-width: 480px) {
+  .instructions-title {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 0;
+    padding-top: 40px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .instructions-title {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 20px;
+  }
+}
+
+.title-history {
+  font-size: 1.875rem;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: -7px;
+  color: #ffffff;
+}
+@media only screen and (max-width: 480px) {
+  .title-history {
+    font-size: 1.875rem;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 25px;
+    color: #ffffff;
+  }
+}
+
+.history-section {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px;
+  background-color: #43140c;
+}
+@media only screen and (max-width: 480px) {
+  .history-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    background-color: #43140c;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .history-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background-color: #43140c;
+    width: 100%;
+  }
+}
+
+.history-box p {
+  color: #ffffff;
+  size: 1rem;
+}
+@media only screen and (max-width: 480px) {
+  .history-box p {
+    color: #ffffff;
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: -4rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .history-box p {
+    color: #ffffff;
+    font-size: 0.76rem;
+    padding-top: 20px;
+    margin-bottom: 0rem;
+  }
+}
+
+.history-box button {
+  color: #ffffff;
+  size: 1rem;
+}
+
+.history-box h2 {
+  color: #ffffff;
+  font-size: 1.875rem;
+  margin-bottom: 0.5rem;
+}
+@media only screen and (max-width: 480px) {
+  .history-box h2 {
+    font-size: 1.875rem;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 25px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .history-box h2 {
+    font-size: 0.76rem;
+    margin-top: 10px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.character-image {
+  max-width: 40%;
+  height: auto;
+  border-radius: 0.625rem;
+}
+@media only screen and (max-width: 480px) {
+  .character-image {
+    max-width: 49%;
+    height: auto;
+    padding: 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .character-image {
+    max-width: 70%;
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+.login-section {
+  background: url(../img/header.png) no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+.login-container {
+  position: absolute;
+  align-content: center;
+  top: 49%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 65rem;
+  height: 76rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 6.25rem;
+  text-align: center;
+}
+@media only screen and (max-width: 480px) {
+  .login-container {
+    position: absolute;
+    top: 0.1%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 3rem;
+    height: 51rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-container {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 2rem;
+    height: 100%;
+  }
+}
+
+.login-form h2 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+@media only screen and (max-width: 480px) {
+  .login-form h2 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-form h2 {
+    font-size: 1rem;
+  }
+}
+
+.orientation-message {
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .orientation-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 50, 101, 0.9);
+    z-index: 1000;
+    text-align: center;
+    font-size: 1.875rem;
+    font-family: "Lilita One", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+  .orientation-message.background-blur {
+    filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* Just below the orientation message */
+  }
+  .orientation-message .bodys-menu {
+    height: 100vh;
+  }
+  .orientation-message .logo,
+  .orientation-message .top-nav {
+    display: none;
+  }
+}
+
+.bodys-menu {
+  background: url(../img/fondo_menu.png) no-repeat center center;
+  background-size: cover;
+  padding-top: 5rem;
+  height: 69rem;
+}
+@media only screen and (max-width: 480px) {
+  .bodys-menu {
+    display: block;
+  }
+  .bodys-menu.controls {
+    display: none;
+  }
+  .bodys-menu .logo {
+    display: block;
+    margin: 0 auto 2rem;
+    width: 20%;
+    padding-top: 60px;
+  }
+  .bodys-menu .top-nav {
+    font-family: "Lilita One", sans-serif;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .bodys-menu .nav-list-link {
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-family: "Lilita One", sans-serif;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  .bodys-menu .nav-list-link:hover {
+    color: #000000;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+}
 
 .ranking-container {
   position: absolute;
@@ -522,11 +1171,60 @@ footer {
   padding: 6.25rem;
   text-align: center;
 }
+@media only screen and (max-width: 480px) {
+  .ranking-container {
+    background-color: #ffffff;
+    max-width: 43.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+    height: 28rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ranking-container {
+    max-width: 100%;
+    padding: 1rem;
+    height: 34rem;
+  }
+}
 
 .ranking-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1.25rem;
+}
+@media only screen and (max-width: 480px) {
+  .ranking-table {
+    background-color: #ffffff;
+    max-width: 29.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+    height: 9rem;
+    margin-left: 19rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ranking-table {
+    padding: 0.4rem;
+    font-size: 0.75rem;
+  }
+}
+
+.title-ranking {
+  font-size: 1.875rem;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
+  margin-left: 17.188rem;
+  color: #000000;
+  font-family: "Lilita One", sans-serif;
 }
 
 .ranking-table th,
@@ -534,6 +1232,13 @@ footer {
   border: none;
   padding: 0.625rem;
   text-align: center;
+}
+@media only screen and (max-width: 480px) {
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.4rem;
+    font-size: 0.875rem;
+  }
 }
 
 .ranking-table th {
@@ -546,665 +1251,6 @@ footer {
 .ranking-table td {
   font-family: "Hedvig Letters Serif", serif;
   font-size: 1rem;
-}
-
-@media (max-width: 576px) {
-  * {
-    box-sizing: border-box;
-  }
-  .header_page {
-    padding: 1.5rem 1.125rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    font-family: "Lilita One", sans-serif;
-    height: 9rem;
-  }
-  .menu-icons {
-    display: none;
-    flex-direction: column;
-    background-color: #ffffff;
-    position: fixed;
-    top: 134px;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 134px);
-    z-index: 10;
-    overflow-y: auto;
-  }
-  .menu-icons.active {
-    display: flex;
-  }
-  body.menu-active {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  .menu-icons a {
-    margin-top: 1.3rem;
-    font-size: 0.9em;
-    padding: 0.5rem 0 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .menu-icons a::after {
-    content: "";
-    display: block;
-    height: 0.0625rem;
-    background-color: #ffffff;
-    width: 70%;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .menu-icons img {
-    height: 1.875rem;
-    width: auto;
-    margin-right: 0.625rem;
-  }
-  .menu-icons a:hover {
-    color: #970000;
-  }
-  .menu-icons a:hover img {
-    filter: brightness(0.8);
-  }
-  .header-content {
-    padding: 3rem;
-    margin: auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .game-section {
-    background: url(../img/header.png) no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    height: 20rem;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .menu-hamburger {
-    display: block;
-    position: absolute;
-    top: 0rem;
-    right: 1rem;
-  }
-  .header-logo {
-    position: absolute;
-    top: 0rem;
-    left: 1rem;
-    width: 7rem;
-    padding: 1rem;
-    height: auto;
-  }
-  .instructions-title {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    margin-right: 0;
-    padding-top: 40px;
-  }
-  .instructions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-  }
-  .instruction-item {
-    display: flex;
-    flex-direction: column;
-    padding: 0rem;
-    margin-bottom: 2rem;
-    width: 290px;
-  }
-  .p {
-    font-family: "Hedvig Letters Serif", serif;
-    font-size: 0.76rem;
-    padding: 40px;
-    padding-bottom: -40px;
-    padding-right: 20px;
-    white-space: normal;
-    width: 100%;
-    transform-origin: left;
-  }
-  .instruction-text-box {
-    background-color: #464524;
-    border: 1px solid #cccccc;
-    padding: 0.9375rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: 17rem;
-    color: white;
-  }
-  .history-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    background-color: #43140c;
-    width: 100%;
-  }
-  .image-box {
-    order: -1;
-    margin-bottom: 1rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .character-image {
-    max-width: 70%;
-    height: auto;
-    padding: 1rem;
-  }
-  .history-box {
-    flex: 1;
-    margin: 4rem;
-    text-align: left;
-    width: 100%;
-    padding: 0 1rem;
-  }
-  .history-box h2 {
-    font-size: 1.875rem;
-    margin-top: 20px;
-    margin-bottom: 0.5rem;
-    margin-left: 25px;
-  }
-  .title-history {
-    font-size: 1.875rem;
-    margin-top: 20px;
-    margin-bottom: 0.5rem;
-    margin-left: 25px;
-    color: #ffffff;
-  }
-  .history-box p {
-    color: #ffffff;
-    font-size: 0.76rem;
-    padding-top: 20px;
-    margin-bottom: -4rem;
-  }
-  footer {
-    padding: 2rem 0;
-  }
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-logo {
-    margin-bottom: 1rem;
-  }
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-  }
-  .footer-icons .icon-link {
-    margin: 0 0.5rem;
-  }
-  .login-container {
-    position: absolute;
-    top: 0.1%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 3rem;
-    height: 51rem;
-  }
-  .login-form {
-    padding: 1rem;
-    max-width: 90%;
-    margin-top: -2rem;
-  }
-  .login-form h2 {
-    font-size: 1rem;
-  }
-  .login-form label {
-    font-size: 0.76rem;
-  }
-  .login-form input {
-    font-size: 0.76rem;
-  }
-  .login-form button {
-    width: 100%;
-    font-size: 0.76rem;
-  }
-  .credits-section {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #fff;
-    padding: 2rem 0;
-    width: 100%;
-    max-width: 65rem;
-    margin: 0 auto;
-    height: auto;
-    min-height: 60vh;
-  }
-  .credits-container {
-    background-color: #ffffff;
-    max-width: 43.75rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 1.5rem;
-  }
-  .credits-container h2 {
-    font-family: "Lilita One", sans-serif;
-    margin-bottom: 0.5rem;
-    font-size: 0.76rem;
-  }
-  .title-credits,
-  .title-text {
-    color: #000;
-    font-family: "Hedvig Letters Serif", serif;
-    font-size: 0.75rem;
-    margin: 0.25rem 0;
-  }
-  .ranking-container {
-    background-color: #ffffff;
-    max-width: 43.75rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 1.5rem;
-  }
-  .ranking-table th,
-  .ranking-table td {
-    padding: 0.4rem;
-    font-size: 0.875rem;
-  }
-  .orientation-message {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(16, 50, 101, 0.9);
-    z-index: 1000;
-    text-align: center;
-    font-size: 1.875rem;
-    font-family: "Lilita One", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-  }
-  .background-blur {
-    filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999; /* Just below the orientation message */
-  }
-  .bodys-menu {
-    height: 100vh;
-  }
-  .nav-list-link {
-    font-size: 2rem;
-    text-decoration: none;
-    font-family: "Lilita One", sans-serif;
-    color: #ffffff;
-    transition: all 0.3s ease;
-  }
-  .logo,
-  .top-nav {
-    display: none;
-  }
-}
-@media (max-width: 900px) and (orientation: landscape) {
-  .orientation-message {
-    display: none;
-  }
-  .bodys-menu {
-    background: url(../img/fondo_menu.png) no-repeat center center;
-    background-size: cover;
-    padding-top: 0.001rem;
-    height: 280px;
-  }
-  .logo {
-    display: block;
-    margin: 0 auto 2rem;
-    width: 20%;
-    padding-top: 60px;
-  }
-  .top-nav {
-    font-family: "Lilita One", sans-serif;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .nav-list-link {
-    font-size: 1.25rem;
-    text-decoration: none;
-    font-family: "Lilita One", sans-serif;
-    color: #ffffff;
-    transition: all 0.3s ease;
-  }
-  .nav-list-link:hover {
-    color: #000000;
-    transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  }
-  .controls {
-    display: none;
-  }
-}
-@media (max-width: 767.98px) {
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  .menu-icons {
-    display: none;
-    flex-direction: column;
-    background-color: #ffffff;
-    position: fixed;
-    top: 134px;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 134px);
-    z-index: 10;
-    overflow-y: auto;
-  }
-  .menu-icons.active {
-    display: flex;
-  }
-  body.menu-active {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  .menu-icons a {
-    margin: 1rem 0;
-    font-size: 1rem;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .menu-icons a::after {
-    content: "";
-    display: block;
-    height: 0.0625rem;
-    width: 70%;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .menu-icons img {
-    height: 1.875rem;
-    width: auto;
-    margin-right: 0.625rem;
-  }
-  .menu-icons a:hover {
-    color: #970000;
-  }
-  .menu-icons a:hover img {
-    filter: brightness(0.8);
-  }
-  .header-content {
-    padding: 1rem;
-    margin: auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .game-section {
-    background: url(../img/header.png) no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    height: 27rem;
-    margin: 0;
-  }
-  .menu-hamburger {
-    display: block;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-  .header-logo {
-    position: absolute;
-    top: -0.5rem;
-    left: 1rem;
-    width: 7rem;
-    padding: 1rem;
-    height: auto;
-  }
-  .instructions-title {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 20px;
-  }
-  .instructions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-  }
-  .instruction-item {
-    display: flex;
-    flex-direction: column;
-    padding: 0rem;
-    margin-bottom: 2rem;
-    width: 90%;
-  }
-  .p {
-    font-family: "Hedvig Letters Serif", serif;
-    font-size: 0.76rem;
-    padding: 20px;
-    white-space: normal;
-    width: 100%;
-    transform-origin: left;
-  }
-  .instruction-text-box {
-    background-color: #464524;
-    border: 1px solid #cccccc;
-    padding: 0.9375rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: auto;
-    color: white;
-  }
-  .history-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-    background-color: #43140c;
-    width: 100%;
-  }
-  .image-box {
-    order: -1;
-    margin-bottom: 1rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .character-image {
-    max-width: 70%;
-    height: auto;
-    padding: 1rem;
-  }
-  .history-box {
-    flex: 1;
-    margin: 2rem;
-    text-align: left;
-    width: 100%;
-    padding: 0 1rem;
-  }
-  .history-box h2 {
-    font-size: 0.76rem;
-    margin-top: 10px;
-    margin-bottom: 0.5rem;
-  }
-  .history-box p {
-    color: #ffffff;
-    font-size: 0.76rem;
-    padding-top: 20px;
-    margin-bottom: 0rem;
-  }
-  footer {
-    padding: 1rem;
-  }
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-logo {
-    margin-bottom: 1rem;
-  }
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-  }
-  .footer-icons .icon-link {
-    margin: 0 0.5rem;
-  }
-  .login-container {
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 2rem;
-    height: 100%;
-  }
-  .login-form {
-    padding: 1rem;
-    max-width: 100%;
-    margin-top: -2rem;
-  }
-  .login-form h2 {
-    font-size: 1rem;
-  }
-  .login-form label {
-    font-size: 0.76rem;
-  }
-  .login-form input {
-    font-size: 0.76rem;
-  }
-  .login-form button {
-    width: 14rem;
-    font-size: 0.76rem;
-  }
-  .credits-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    padding: 2rem;
-    margin-bottom: 4rem;
-    text-align: center;
-    width: 102%;
-    height: 32rem;
-  }
-  .credits-container {
-    background-color: #ffffff;
-    max-width: 50%;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .credits-container h2 {
-    font-family: "Lilita One", sans-serif;
-    margin-bottom: 0.5rem;
-    font-size: 0.76rem;
-  }
-  .title-credits,
-  .title-text {
-    color: #000;
-    font-family: "Hedvig Letters Serif", serif;
-    font-size: 0.75rem;
-    margin: 0.25rem 0;
-  }
-  .ranking-container {
-    max-width: 100%;
-    padding: 1rem;
-    height: 34rem;
-  }
-  .ranking-table th,
-  .ranking-table td {
-    padding: 0.4rem;
-    font-size: 0.75rem;
-  }
-  .orientation-message {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(16, 50, 101, 0.9);
-    z-index: 1000;
-    text-align: center;
-    font-size: 1.875rem;
-    font-family: "Lilita One", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-  }
-  .background-blur {
-    filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999; /* Justo debajo del mensaje de orientación */
-  }
-  .bodys-menu {
-    height: 100vh;
-  }
-  .nav-list-link {
-    font-size: 1.5rem;
-    text-decoration: none;
-    font-family: "Lilita One", sans-serif;
-    color: #ffffff;
-    transition: all 0.3s ease;
-  }
-  .logo,
-  .top-nav {
-    display: none;
-  }
-  .top-nav.active,
-  .logo.active {
-    display: flex;
-  }
-  .header-content {
-    padding: 1rem;
-    margin: auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    padding: 3rem;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.game-section {
+    background: url(../img/header.png) no-repeat center center;
+    background-size: cover;
+    padding: 6.25rem 0; // 100px
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    @include respond-to($phone) {
+        background: url(../img/header.png) no-repeat center center;
+        background-size: cover;
+        width: 100%;
+        height: 26rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+  
+ 

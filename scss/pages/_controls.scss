@@ -1,0 +1,29 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.title-controls {
+    font-size: $fs-lg;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: $ff-title;
+  }
+  .image-controls {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .main_controls {
+    margin-top: 300px;
+    background: url(../img/Keys.png) no-repeat center;
+    padding-bottom: 30rem;
+    background-size: contain;
+  }
+  .title {
+    font-size: $fs-xxmd;
+  
+    text-align: center;
+    padding-top: 0rem;
+    margin-top: -11.25rem; // -180px
+    color: $crl-title;
+  }
+  

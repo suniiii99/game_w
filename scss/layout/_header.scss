@@ -1,0 +1,59 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.header_menu {
+  background-color: #fafafa;
+  padding: 1rem;
+}
+.logo {
+  display: block;
+  margin: 0 auto 2rem; // Ajusta el margen inferior
+  width: 30%;
+  padding-top: 250px;
+}
+
+.header_page {
+  padding: 1.5rem 1.125rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-white;
+  font-family: "Lilita One", sans-serif;
+  height: 17rem;
+
+  @include respond-to($phone) {
+    flex-direction: column; // Cambia a una columna en pantallas pequeñas
+    padding: 1rem;
+    height: auto;
+    margin-top: -2rem; // Subir el header
+  }
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  font-family: $ff-title;
+
+  @include respond-to($phone) {
+    padding: 8rem;
+    margin: -5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.header-logo {
+  height: 9.375rem;
+
+  @include respond-to($phone) {
+    position: absolute;
+    top: -3rem; // Sube el logo más
+    left: 1rem;
+    width: 7rem;
+    padding: 0.5rem;
+    height: auto;
+  }
+}

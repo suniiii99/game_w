@@ -1,0 +1,114 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.main_credits {
+  background-color: $crl-main;
+  border-radius: 10px;
+  padding: 8rem; // 128px
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+.credits-container {
+  background-color: $crl-title;
+  max-width: 43.75rem; // 700px
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  @include respond-to($phone) {
+    background-color: $crl-title;
+    max-width: 43.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 1.5rem;
+  }
+  @include respond-to($tablet) {
+    background-color: $crl-title;
+    max-width: 50%; // Mantener el tamaño más pequeño
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.credits-container h2 {
+  font-family: $ff-title;
+  margin-bottom: 1.25rem; // 20px
+
+  @include respond-to($phone) {
+    font-family: $ff-title;
+    margin-bottom: 0.5rem;
+    font-size: $fs-xs;
+  }
+  @include respond-to($tablet) {
+    font-family: $ff-title;
+    margin-bottom: 0.5rem;
+    font-size: $fs-xs; // Mantiene el tamaño de fuente
+  }
+}
+
+.title-text {
+  color: #000;
+  font-family: $ff-parrafo;
+  font-size: $fs-md;
+  @include respond-to($phone) {
+    color: #000;
+    font-family: $ff-parrafo;
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
+  }
+  @include respond-to($tablet) {
+    color: #000;
+    font-family: $ff-parrafo;
+    font-size: 0.75rem; // Mantiene el tamaño de fuente
+    margin: 0.25rem 0;
+  }
+}
+
+.credits-section {
+  position: absolute;
+  align-content: center;
+  top: 49%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 65rem;
+  height: 76rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 6.25rem;
+  text-align: center;
+  @include respond-to($phone) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+    height: auto;
+    min-height: 60vh;
+  }
+  @include respond-to($tablet) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    width: 102%;
+    height: 32rem;
+  }
+}
