@@ -141,22 +141,23 @@
 
 .menu-hamburger {
   display: none; // Por defecto está oculto
+  @include respond-to($tablet) {
+    display: block;
+    position: absolute;
+    top: 8rem; // Aumenta el valor de top para bajarlo
+    right: 6rem;
+    z-index: 20; // Asegúrate de que esté por encima del menú desplegable
+    overflow: hidden;
+  }
   @include respond-to($phone) {
     display: block;
     position: absolute; // Posición absoluta para que se mantenga en su lugar
-    top: 0rem; // Ajusta la posición vertical
+    top: 9rem; // Ajusta la posición vertical
     right: 2rem; // Ajusta la posición horizontal
     z-index: 20; // Asegúrate de que esté por encima del menú desplegable
     overflow: hidden;
   }
-  @include respond-to($tablet) {
-    display: block;
-    position: absolute;
-    top: 7rem; // Aumenta el valor de top para bajarlo
-    right: 5rem;
-    z-index: 20; // Asegúrate de que esté por encima del menú desplegable
-    overflow: hidden;
-  }
+ 
 }
 .link {
   display: block;

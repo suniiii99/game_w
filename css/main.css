@@ -463,10 +463,10 @@ p {
 }
 @media only screen and (max-width: 480px) {
   .header-logo {
-    position: absolute;
-    top: -3rem;
-    left: 1rem;
-    width: 7rem;
+    position: relative;
+    top: 0;
+    left: -4rem;
+    width: 5rem;
     padding: 0.5rem;
     height: auto;
   }
@@ -655,22 +655,22 @@ footer {
 .menu-hamburger {
   display: none;
 }
-@media only screen and (max-width: 480px) {
-  .menu-hamburger {
-    display: block;
-    position: absolute;
-    top: 0rem;
-    right: 2rem;
-    z-index: 20;
-    overflow: hidden;
-  }
-}
 @media only screen and (max-width: 768px) {
   .menu-hamburger {
     display: block;
     position: absolute;
-    top: 7rem;
-    right: 5rem;
+    top: 8rem;
+    right: 6rem;
+    z-index: 20;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .menu-hamburger {
+    display: block;
+    position: absolute;
+    top: 9rem;
+    right: 2rem;
     z-index: 20;
     overflow: hidden;
   }

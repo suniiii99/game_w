@@ -49,10 +49,10 @@
   height: 9.375rem;
 
   @include respond-to($phone) {
-    position: absolute;
-    top: -3rem; // Sube el logo más
-    left: 1rem;
-    width: 7rem;
+    position: relative; // Cambia a relativa para que se ajuste al flujo
+    top: 0; // Elimina la posición absoluta que podría moverlo fuera de la pantalla
+    left: -4rem; 
+    width: 5rem; // Reduce el tamaño del logo para pantallas pequeñas
     padding: 0.5rem;
     height: auto;
   }
