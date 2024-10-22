@@ -6,9 +6,9 @@
 }
 .logo {
   display: block;
-  margin: 0 auto 2rem; // Ajusta el margen inferior
-  width: 30%;
-  padding-top: 250px;
+  margin: 0 auto 2rem;
+  width: 103%;
+  padding-top: 173px;
 }
 
 .header_page {
@@ -51,7 +51,7 @@
   @include respond-to($phone) {
     position: relative; // Cambia a relativa para que se ajuste al flujo
     top: 0; // Elimina la posición absoluta que podría moverlo fuera de la pantalla
-    left: -4rem; 
+    left: -4rem;
     width: 5rem; // Reduce el tamaño del logo para pantallas pequeñas
     padding: 0.5rem;
     height: auto;

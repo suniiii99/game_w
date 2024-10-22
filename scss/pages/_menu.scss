@@ -54,7 +54,6 @@
   @include respond-to($phone) {
     display: block; // Asegúrate de que esté visible en móviles
 
-    
     &.logo {
       display: block;
       margin: 0 auto 2rem;
@@ -121,6 +120,36 @@
         transform: scale(1.1);
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
       }
+    }
+  }
+ 
+  @include respond-to($phone-landscape) {
+    .logo{
+      display: block;
+      margin: 0 auto 2rem;
+      width: 30%;
+      padding-top: 67px;
+    }
+    .menu-section,
+    .buttons {
+      display: block;
+
+    }
+
+    .orientation-message {
+      display: none;
+    }
+  }
+
+  @include respond-to($tablet-landscape) {
+    .logo_menu,
+    .menu-section,
+    .buttons {
+      display: block;
+    }
+
+    .orientation-message {
+      display: none;
     }
   }
 }

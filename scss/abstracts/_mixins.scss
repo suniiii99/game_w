@@ -1,8 +1,20 @@
+// Móviles pequeños en modo retrato
 $phone: "(max-width: 480px)";
-$tablet: "(max-width: 768px)";
-$phone-tablet-portrait-landscape: "(max-width: 900px) and (orientation: landscape)";
-$tablet-landscape: "(max-width: 1024px) and (min-width: 901px) and (orientation: landscape)";
-$large-desktop: "(max-width: 1700px) and (min-width: 1025px)";
+
+// Móviles pequeños en modo paisaje
+$phone-landscape: "(min-width: 481px) and (max-width: 767px) and (orientation: landscape)";
+
+// Tabletas en modo retrato
+$tablet: "(min-width: 768px) and (max-width: 1024px) and (orientation: portrait)";
+
+// Tabletas en modo paisaje
+$tablet-landscape: "(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)";
+
+// Portátiles y pantallas pequeñas de escritorio
+$laptop: "(min-width: 1025px) and (max-width: 1366px)";
+
+// Pantallas grandes de escritorio
+$desktop: "(min-width: 1367px)";
 
 @mixin respond-to($media) {
   @media only screen and #{$media} {
