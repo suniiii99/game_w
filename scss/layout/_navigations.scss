@@ -12,12 +12,13 @@
   @include respond-to($phone) {
     display: none;
   }
+
  }
 .nav-list-link {
-  font-size: $fs-xxmd;
+  font-size: 1.125rem;
   text-decoration: none;
-  font-family: $ff-title;
-  color: $crl-menu;
+  font-family: "Lilita One", sans-serif;
+  color: #ffffff;
   transition: all 0.3s ease;
 
   &:hover {
@@ -28,8 +29,17 @@
   @include respond-to($phone) {
     display: none;
   }
+     @include respond-to($phone-landscape) {
 
- }
+    font-size: 1.125rem;
+    text-decoration: none;
+    font-family: "Lilita One", sans-serif;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    }
+}
+
+ 
 .menu-icons {
   @include respond-to($phone) {
     display: none;

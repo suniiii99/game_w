@@ -128,7 +128,7 @@
       display: block;
       margin: 0 auto 2rem;
       width: 30%;
-      padding-top: 67px;
+      padding-top: 1rem;
     }
     .menu-section,
     .buttons {
@@ -142,7 +142,12 @@
   }
 
   @include respond-to($tablet-landscape) {
-    .logo_menu,
+    .logo {
+      display: block;
+      margin: 0 auto 2rem;
+      width: 22%;
+      padding-top: -px;
+     }
     .menu-section,
     .buttons {
       display: block;
