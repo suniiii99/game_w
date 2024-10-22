@@ -540,7 +540,7 @@ footer {
 }
 
 .nav-list-link {
-  font-size: 1.125rem;
+  font-size: 5.125rem;
   text-decoration: none;
   font-family: "Lilita One", sans-serif;
   color: #ffffff;
@@ -556,7 +556,7 @@ footer {
     display: none;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 924px) and (orientation: landscape) {
   .nav-list-link {
     font-size: 1.125rem;
     text-decoration: none;
@@ -1172,8 +1172,8 @@ footer {
   .bodys-menu .logo {
     display: block;
     margin: 0 auto 2rem;
-    width: 30%;
-    padding-top: 67px;
+    width: 35%;
+    padding-top: 49px;
   }
   .bodys-menu .top-nav {
     font-family: "Lilita One", sans-serif;
@@ -1196,27 +1196,12 @@ footer {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 924px) and (orientation: landscape) {
   .bodys-menu .logo {
     display: block;
     margin: 0 auto 2rem;
-    width: 30%;
+    width: 10%;
     padding-top: 1rem;
-  }
-  .bodys-menu .menu-section,
-  .bodys-menu .buttons {
-    display: block;
-  }
-  .bodys-menu .orientation-message {
-    display: none;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .bodys-menu .logo {
-    display: block;
-    margin: 0 auto 2rem;
-    width: 22%;
-    padding-top: -px;
   }
   .bodys-menu .menu-section,
   .bodys-menu .buttons {

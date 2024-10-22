@@ -95,8 +95,9 @@
     .logo {
       display: block;
       margin: 0 auto 2rem;
-      width: 30%;
-      padding-top: 67px;
+      width: 35%;
+      padding-top: 49px;
+ 
     }
 
     .top-nav {
@@ -127,7 +128,7 @@
     .logo{
       display: block;
       margin: 0 auto 2rem;
-      width: 30%;
+      width: 10%;
       padding-top: 1rem;
     }
     .menu-section,
@@ -141,20 +142,5 @@
     }
   }
 
-  @include respond-to($tablet-landscape) {
-    .logo {
-      display: block;
-      margin: 0 auto 2rem;
-      width: 22%;
-      padding-top: -px;
-     }
-    .menu-section,
-    .buttons {
-      display: block;
-    }
 
-    .orientation-message {
-      display: none;
-    }
-  }
 }
