@@ -415,13 +415,6 @@ p {
   padding: 1rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-  width: 35%;
-  padding-top: 173px;
-}
-
 .header_page {
   padding: 1.5rem 1.125rem;
   display: flex;
@@ -1084,6 +1077,21 @@ footer {
   }
 }
 
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 35%;
+  padding-top: 173px;
+}
+@media only screen and (min-width: 481px) and (max-width: 924px) and (orientation: landscape) {
+  .logo {
+    display: block;
+    margin: 0 auto 2rem;
+    width: 15%;
+    padding-top: 0rem;
+  }
+}
+
 .orientation-message {
   display: none;
 }
@@ -1134,12 +1142,6 @@ footer {
 @media only screen and (max-width: 480px) {
   .bodys-menu {
     display: block;
-  }
-  .bodys-menu.logo {
-    display: block;
-    margin: 0 auto 2rem;
-    width: 30%;
-    padding-top: 81px;
   }
   .bodys-menu .top-nav {
     font-family: "Lilita One", sans-serif;
@@ -1197,12 +1199,6 @@ footer {
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 924px) and (orientation: landscape) {
-  .bodys-menu .logo {
-    display: block;
-    margin: 0 auto 2rem;
-    width: 10%;
-    padding-top: 1rem;
-  }
   .bodys-menu .menu-section,
   .bodys-menu .buttons {
     display: block;
