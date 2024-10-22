@@ -418,7 +418,7 @@ p {
 .logo {
   display: block;
   margin: 0 auto 2rem;
-  width: 103%;
+  width: 35%;
   padding-top: 173px;
 }
 
@@ -538,34 +538,27 @@ footer {
     display: none;
   }
 }
-.top-nav .nav-list-link {
+
+.nav-list-link {
   font-size: 3.125rem;
   text-decoration: none;
   font-family: "Lilita One", sans-serif;
   color: #ffffff;
   transition: all 0.3s ease;
 }
-.top-nav .nav-list-link:hover {
+.nav-list-link:hover {
   color: #000000;
   transform: scale(1.1);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 @media only screen and (max-width: 480px) {
-  .top-nav .nav-list-link {
+  .nav-list-link {
     display: none;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
-  .top-nav .nav-list-link {
-    font-size: 2.125rem;
-    text-decoration: none;
-    font-family: "Lilita One", sans-serif;
-    color: #ffffff;
-    transition: all 0.3s ease;
-  }
-}
+
 @media only screen and (max-width: 480px) {
-  .top-nav .menu-icons {
+  .menu-icons {
     display: none;
     flex-direction: column;
     background-color: #ffffff;
@@ -577,10 +570,10 @@ footer {
     z-index: 10;
     overflow-y: auto;
   }
-  .top-nav .menu-icons.active {
+  .menu-icons.active {
     display: flex;
   }
-  .top-nav .menu-icons a {
+  .menu-icons a {
     margin-top: 1.6rem;
     font-size: 1rem;
     padding: 0.5rem 0 1.3rem;
@@ -591,7 +584,7 @@ footer {
     text-decoration: none;
     color: #000000;
   }
-  .top-nav .menu-icons a::after {
+  .menu-icons a::after {
     content: "";
     display: block;
     height: 0.0625rem;
@@ -600,18 +593,18 @@ footer {
     left: 50%;
     transform: translateX(-50%);
   }
-  .top-nav .menu-icons img.icons {
+  .menu-icons img.icons {
     margin-right: 0.5rem;
     width: 1.25rem;
     height: 1.25rem;
   }
-  .top-nav .menu-icons img {
+  .menu-icons img {
     width: 1.5rem;
     height: 1.5rem;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .top-nav .menu-icons {
+  .menu-icons {
     display: none;
     flex-direction: column;
     background-color: #ffffff;
@@ -623,10 +616,10 @@ footer {
     z-index: 10;
     overflow-y: auto;
   }
-  .top-nav .menu-icons.active {
+  .menu-icons.active {
     display: flex;
   }
-  .top-nav .menu-icons a {
+  .menu-icons a {
     margin-top: 4.6rem;
     font-size: 1rem;
     padding: 0.5rem 0 1.3rem;
@@ -637,7 +630,7 @@ footer {
     text-decoration: none;
     color: #000000;
   }
-  .top-nav .menu-icons .menu-icons a::after {
+  .menu-icons .menu-icons a::after {
     content: "";
     display: block;
     height: 0.0625rem;
@@ -648,23 +641,24 @@ footer {
     left: 50%;
     transform: translateX(-50%);
   }
-  .top-nav .menu-icons .menu-icons img {
+  .menu-icons .menu-icons img {
     height: 1.875rem;
     width: auto;
     margin-right: 0.625rem;
   }
-  .top-nav .menu-icons .menu-icons a:hover {
+  .menu-icons .menu-icons a:hover {
     color: #970000;
   }
-  .top-nav .menu-icons .menu-icons a:hover img {
+  .menu-icons .menu-icons a:hover img {
     filter: brightness(0.8);
   }
 }
-.top-nav .menu-hamburger {
+
+.menu-hamburger {
   display: none;
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .top-nav .menu-hamburger {
+  .menu-hamburger {
     display: block;
     position: absolute;
     top: 8rem;
@@ -674,7 +668,7 @@ footer {
   }
 }
 @media only screen and (max-width: 480px) {
-  .top-nav .menu-hamburger {
+  .menu-hamburger {
     display: block;
     position: absolute;
     top: 9rem;
@@ -683,7 +677,7 @@ footer {
     overflow: hidden;
   }
 }
-.top-nav .link {
+.menu-hamburger .link {
   display: block;
   margin-top: 2rem;
   text-align: center;
@@ -691,14 +685,14 @@ footer {
   text-decoration: none;
   font-family: "Lilita One", sans-serif;
 }
-.top-nav .link:hover {
+.menu-hamburger .link:hover {
   text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
 }
-.top-nav .footer-text a {
+.menu-hamburger .footer-text a {
   color: #ffffff;
   text-decoration: none;
 }
-.top-nav .footer-text a:hover {
+.menu-hamburger .footer-text a:hover {
   text-decoration: underline;
 }
 

@@ -12,101 +12,92 @@
   @include respond-to($phone) {
     display: none;
   }
+ }
+.nav-list-link {
+  font-size: $fs-xxmd;
+  text-decoration: none;
+  font-family: $ff-title;
+  color: $crl-menu;
+  transition: all 0.3s ease;
 
-  .nav-list-link {
-    font-size: $fs-xxmd;
-    text-decoration: none;
-    font-family: $ff-title;
-    color: $crl-menu;
-    transition: all 0.3s ease;
-
-    &:hover {
-      color: $crl-hover;
-      transform: scale(1.1);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-    @include respond-to($phone) {
-      display: none;
-    }
-    @include respond-to($phone-landscape) {
-      font-size: 2.125rem;
-      text-decoration: none;
-      font-family: "Lilita One", sans-serif;
-      color: #ffffff;
-      transition: all 0.3s ease;
-    }
+  &:hover {
+    color: $crl-hover;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  @include respond-to($phone) {
+    display: none;
   }
 
+ }
+.menu-icons {
+  @include respond-to($phone) {
+    display: none;
+    flex-direction: column;
+    background-color: $crl-title; // Color del menú
+    position: fixed; // Fijo para cubrir toda la pantalla
+    top: 0; // Desde la parte superior
+    left: 0; // Desde el lado izquierdo
+    width: 100vw; // Ancho completo de la ventana
+    height: 100vh; // Altura completa de la ventana
+    z-index: 10; // Asegúrate de que esté por encima de otros elementos
+    overflow-y: auto; // Permitir desplazamiento si es necesario
 
+    &.active {
+      display: flex; // Mostrar el menú cuando está activo
+    }
 
-  .menu-icons {
-    @include respond-to($phone) {
-      display: none;
-      flex-direction: column;
-      background-color: $crl-title; // Color del menú
-      position: fixed; // Fijo para cubrir toda la pantalla
-      top: 0; // Desde la parte superior
-      left: 0; // Desde el lado izquierdo
-      width: 100vw; // Ancho completo de la ventana
-      height: 100vh; // Altura completa de la ventana
-      z-index: 10; // Asegúrate de que esté por encima de otros elementos
-      overflow-y: auto; // Permitir desplazamiento si es necesario
+    a {
+      margin-top: 1.6rem; // Margen superior
+      font-size: $fs-nm; // Tamaño de fuente
+      padding: 0.5rem 0 1.3rem; // Espaciado interno
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-decoration: none; // Sin subrayado
+      color: $color-black; // Color del texto
 
-      &.active {
-        display: flex; // Mostrar el menú cuando está activo
-      }
-
-      a {
-        margin-top: 1.6rem; // Margen superior
-        font-size: $fs-nm; // Tamaño de fuente
-        padding: 0.5rem 0 1.3rem; // Espaciado interno
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        text-decoration: none; // Sin subrayado
-        color: $color-black; // Color del texto
-
-        &::after {
-          content: "";
-          display: block;
-          height: 0.0625rem;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-      }
-
-      img.icons {
-        margin-right: 0.5rem;
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-
-      img {
-        width: 1.5rem;
-        height: 1.5rem;
+      &::after {
+        content: "";
+        display: block;
+        height: 0.0625rem;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
-    @include respond-to($tablet) {
-      display: none; // Ocultar por defecto
-      flex-direction: column;
-      background-color: $crl-title; // Color de fondo del menú
-      position: fixed; // Fijo para cubrir toda la pantalla
-      top: 0; // Comienza desde la parte superior
-      left: 0; // Desde el lado izquierdo
-      width: 100vw; // Ancho completo de la ventana
 
-      height: 100vh; // Altura completa de la ventana
-      z-index: 10; // Asegúrate de que esté por encima de otros elementos
-      overflow-y: auto; // Permitir desplazamiento si es necesario
+    img.icons {
+      margin-right: 0.5rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
 
-      &.active {
-        display: flex; // Mostrar el menú cuando está activo
-      }
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  @include respond-to($tablet) {
+    display: none; // Ocultar por defecto
+    flex-direction: column;
+    background-color: $crl-title; // Color de fondo del menú
+    position: fixed; // Fijo para cubrir toda la pantalla
+    top: 0; // Comienza desde la parte superior
+    left: 0; // Desde el lado izquierdo
+    width: 100vw; // Ancho completo de la ventana
+    
+    height: 100vh; // Altura completa de la ventana
+    z-index: 10; // Asegúrate de que esté por encima de otros elementos
+    overflow-y: auto; // Permitir desplazamiento si es necesario
 
-      a {
+    &.active {
+      display: flex; // Mostrar el menú cuando está activo
+    }
+
+    a {
         margin-top: 4.6rem;
         font-size: 1rem;
         padding: 0.5rem 0 1.3rem;
@@ -116,73 +107,72 @@
         position: relative;
         text-decoration: none;
         color: #000000;
-      }
-
-      .menu-icons a::after {
-        content: "";
-        display: block;
-        height: 0.0625rem;
-        width: 70%;
-        margin: 0 auto;
-        position: absolute;
-        bottom: 0;
-        left: 50%; // Centrado
-        transform: translateX(-50%);
-      }
-
-      .menu-icons img {
-        height: 1.875rem; // Tamaño del ícono
-        width: auto;
-        margin-right: 0.625rem;
-      }
-
-      .menu-icons a:hover {
-        color: #970000; // Color del texto al pasar el mouse
-      }
-
-      .menu-icons a:hover img {
-        filter: brightness(0.8); // Efecto al pasar el mouse sobre la imagen
-      }
     }
-  }
 
-  .menu-hamburger {
-    display: none; // Por defecto está oculto
-    @include respond-to($tablet) {
+    .menu-icons a::after {
+      content: "";
       display: block;
+      height: 0.0625rem;
+      width: 70%;
+      margin: 0 auto;
       position: absolute;
-      top: 8rem; // Aumenta el valor de top para bajarlo
-      right: 6rem;
-      z-index: 20; // Asegúrate de que esté por encima del menú desplegable
-      overflow: hidden;
+      bottom: 0;
+      left: 50%; // Centrado
+      transform: translateX(-50%);
     }
-    @include respond-to($phone) {
-      display: block;
-      position: absolute; // Posición absoluta para que se mantenga en su lugar
-      top: 9rem; // Ajusta la posición vertical
-      right: 2rem; // Ajusta la posición horizontal
-      z-index: 20; // Asegúrate de que esté por encima del menú desplegable
-      overflow: hidden;
+
+    .menu-icons img {
+      height: 1.875rem; // Tamaño del ícono
+      width: auto;
+      margin-right: 0.625rem;
     }
-  }
-  .link {
-    display: block;
-    margin-top: 2rem;
-    text-align: center;
-    color: #000000;
-    text-decoration: none;
-    font-family: $ff-title;
-  }
 
-  .link:hover {
-    text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
-  }
-  .footer-text a {
-    color: $color-white;
-    text-decoration: none;
-  }
+    .menu-icons a:hover {
+      color: #970000; // Color del texto al pasar el mouse
+    }
 
-  .footer-text a:hover {
-    text-decoration: underline;
+    .menu-icons a:hover img {
+      filter: brightness(0.8); // Efecto al pasar el mouse sobre la imagen
+    }
   }
 }
+
+.menu-hamburger {
+  display: none; // Por defecto está oculto
+  @include respond-to($tablet) {
+    display: block;
+    position: absolute;
+    top: 8rem; // Aumenta el valor de top para bajarlo
+    right: 6rem;
+    z-index: 20; // Asegúrate de que esté por encima del menú desplegable
+    overflow: hidden;
+  }
+  @include respond-to($phone) {
+    display: block;
+    position: absolute; // Posición absoluta para que se mantenga en su lugar
+    top: 9rem; // Ajusta la posición vertical
+    right: 2rem; // Ajusta la posición horizontal
+    z-index: 20; // Asegúrate de que esté por encima del menú desplegable
+    overflow: hidden;
+  }.link {
+  display: block;
+  margin-top: 2rem;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  font-family: $ff-title;
+}
+
+.link:hover {
+  text-decoration: underline; /* Agrega un subrayado cuando pasas el mouse */
+}
+.footer-text a {
+  color: $color-white;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+ }
+ 
