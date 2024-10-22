@@ -154,13 +154,14 @@
     right: 2rem; // Ajusta la posición horizontal
     z-index: 20; // Asegúrate de que esté por encima del menú desplegable
     overflow: hidden;
-  }.link {
+  .link {
   display: block;
   margin-top: 2rem;
   text-align: center;
   color: #000000;
   text-decoration: none;
   font-family: $ff-title;
+}
 }
 
 .link:hover {
