@@ -1,46 +1,49 @@
-// Crea una nueva escena
 let gameScene = new Phaser.Scene('Game');
 
 // Inicializa los parámetros del jugador
 gameScene.init = function () {
-    this.playerSpeed = 500; // 300
-    this.playerJump = -1000; 
+    this.playerSpeed = 500;
+    this.playerJump = -1000;
+    this.playerLives = 3; // Vidas del jugador
+    this.scoreText = null; // Texto para mostrar el puntaje
+    this.isGameOver = false; // Estado del juego
+    this.gameOverText = null; // Texto de juego terminado
+
     // Coordenadas de los pisos
     this.floorCoordinates = [
-        { x: 200, y: 650, type: 'floor_1' }, 
-        { x: 950, y: 630, type: 'floor_3' }, 
-        { x: 1400, y: 620, type: 'floor_3' },  
+        { x: 200, y: 650, type: 'floor_1' },
+        { x: 950, y: 630, type: 'floor_3' },
+        { x: 1400, y: 620, type: 'floor_3' },
         { x: 2150, y: 640, type: 'floor_1' },
-        { x: 3200, y: 634, type: 'floor_1' }, 
-        { x: 4090, y: 625, type: 'floor_2' }, 
+        { x: 3200, y: 634, type: 'floor_1' },
+        { x: 4090, y: 625, type: 'floor_2' },
         { x: 5350, y: 630, type: 'floor_1' }
     ];
+
     this.villainCoordinates = [
-        { x: 1000, y: 490, type: 'planta', isFlying: false },  // Planta en el piso
-        { x: 5200, y: 400, type: 'lobo', isFlying: false },    // Lobo
-        { x: 1800, y: 380, type: 'hada', isFlying: true }      // Hada voladora
+        { x: 1000, y: 490, type: 'planta', isFlying: false },
+        { x: 5700, y: 480, type: 'lobo', isFlying: false },
+        { x: 1800, y: 380, type: 'hada', isFlying: true }
     ];
-    // Coordenadas de las plataformas
+
     this.platformCoordinates = [
-        { x: 730, y: 500, type: 'plataform' }, // Plataforma separada
-        { x: 1180, y: 500, type: 'plataform' }, // Plataforma separada
+        { x: 730, y: 500, type: 'plataform' },
+        { x: 1180, y: 500, type: 'plataform' },
         { x: 1600, y: 490, type: 'plataform' },
         { x: 1400, y: 200, type: 'plataform2' },
         { x: 1490, y: 300, type: 'plataform2' },
-        { x: 1700, y: 400, type: 'plataform2' }, // Plataforma separada
-        { x: 1880, y: 430, type: 'plataform2' }, // Plataforma separada
-        { x: 2600, y: 500, type: 'plataform' }, // Plataforma separada
-        { x: 2700, y: 400, type: 'plataform' }, // Plataforma separada
-        { x: 3800, y: 500, type: 'plataform' },//
-        { x: 3610, y: 490, type: 'plataform' },//
-
+        { x: 1700, y: 400, type: 'plataform2' },
+        { x: 1880, y: 430, type: 'plataform2' },
+        { x: 2600, y: 500, type: 'plataform' },
+        { x: 2700, y: 400, type: 'plataform' },
+        { x: 3800, y: 500, type: 'plataform' },
+        { x: 3610, y: 490, type: 'plataform' },
         { x: 4450, y: 500, type: 'plataform2' },
         { x: 4600, y: 450, type: 'plataform' },
         { x: 4800, y: 500, type: 'plataform2' },
-
         { x: 5200, y: 490, type: 'plataform' },
         { x: 5300, y: 400, type: 'plataform2' },
-        { x: 5500, y: 480, type: 'plataform' },
+        { x: 5500, y: 480, type: 'plataform' }
     ];
 
     // Arreglo para "gifts" y "props"
@@ -68,14 +71,14 @@ gameScene.loadAssets = function () {
     this.load.image('floor_3', '../img/floor3.png');
     this.load.image('plataform', '../img/Plataforma.png');
     this.load.image('plataform2', '../img/plataform2.png');
-    this.load.image('planta', '../img/planta.png');  // Imagen de la planta
-    this.load.image('lobo', '../img/villano_lobo.png');      // Imagen del lobo
-    this.load.image('hada', '../img/hada.png');  
-    this.load.image('libro', '../img/libro.png'); // Imagen del libro
-    this.load.image('gato_negro', '../img/gato_negro.png'); // Imagen del gato negro
-    this.load.image('gato_blanco', '../img/gato_blanco.png'); // Imagen del gato blanco
-    this.load.image('varita', '../img/varita.png'); // Imagen de la varita
-    this.load.image('cura', '../img/cura.png'); // Imagen del cura
+    this.load.image('planta', '../img/planta.png');
+    this.load.image('lobo', '../img/villano_lobo.png');
+    this.load.image('hada', '../img/hada.png');
+    this.load.image('libro', '../img/libro.png');
+    this.load.image('gato_negro', '../img/gato_negro.png');
+    this.load.image('gato_blanco', '../img/gato_blanco.png');
+    this.load.image('varita', '../img/varita.png');
+    this.load.image('cura', '../img/cura.png');
 };
 
 // Crea los elementos del juego
@@ -83,38 +86,45 @@ gameScene.create = function () {
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(0, 0, 'mid_layer').setOrigin(0, 0);
 
-    const firstFloor = this.floorCoordinates[0]; 
-    const playerStartingX = firstFloor.x; 
-    const playerStartingY = firstFloor.y - 1080; // Ajuste para la posición inicial
+    const firstFloor = this.floorCoordinates[0];
+    const playerStartingX = firstFloor.x;
+    const playerStartingY = firstFloor.y - 1080;
 
-    // Crear el jugador exactamente sobre el primer piso
-    this.player = this.physics.add.sprite(playerStartingX, playerStartingY, 'player'); 
+    // Crear el jugador
+    this.player = this.physics.add.sprite(playerStartingX, playerStartingY, 'player');
     this.player.setCollideWorldBounds(true);
-    this.player.body.setGravityY(600); 
+    this.player.body.setGravityY(600);
     this.player.body.setAllowGravity(true);
     this.player.body.setBounce(0);
-    this.player.body.setOffset(0, -15); 
-    
+    this.player.body.setOffset(0, -15);
+
     // Configuración de los límites del mundo
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
 
-    // Crear pisos y plataformas
+    // Crear pisos, plataformas, villanos y regalos
     this.createFloors();
     this.createPlatforms();
     this.createVillains();
-    this.createGifts(); // Crear objetos de regalo
+    this.createGifts();
 
     // Configuración de las colisiones
     this.physics.add.collider(this.player, this.floors);
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.villains, this.floors);
     this.physics.add.collider(this.villains, this.platforms);
-    this.physics.add.collider(this.villains, this.player);
+    this.physics.add.collider(this.villains, this.player, this.handleVillainCollision, null, this); // Colisión del jugador con villanos
 
     // Configuración de la cámara
     this.cameras.main.setBounds(0, 0, 5760, this.background.height);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
+
+    // Texto de puntaje
+    this.scoreText = this.add.text(16, 16, `Vidas: ${this.playerLives}`, {
+        fontSize: '32px',
+        fill: '#FFF'
+    });
+    this.scoreText.setScrollFactor(1)
 
     // Configuración de la entrada
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -141,103 +151,81 @@ gameScene.createVillains = function () {
     this.villains = this.physics.add.group();
     this.villainCoordinates.forEach(({ x, y, type, isFlying }) => {
         let villain = this.villains.create(x, y, type);
-        villain.setCollideWorldBounds(true);
-        villain.body.setBounce(0);
+        villain.setCollideWorldBounds(true); // Habilitar colisión con los límites del mundo
+        villain.body.setBounce(1); // Permitir rebote al tocar las paredes
+        villain.body.setAllowGravity(false); // Todos los villanos no tienen gravedad
+
+        // Ajustar hitbox del lobo
+        if (type === 'lobo') {
+            villain.body.setSize(villain.width * 0.4, villain.height * 0.2); // Reducir más el tamaño del hitbox
+            villain.body.setOffset(villain.width * 0.3, villain.height * 0.8); // Ajustar el offset del hitbox
+        }
 
         if (isFlying) {
-            villain.body.setAllowGravity(false);
-            villain.body.setVelocityY(-5);
-            this.setHitboxForFairy(villain); // Ajustar hitbox del hada
+            villain.body.setVelocityY(-20); // Velocidad inicial para el hada
         } else {
-            this.setHitboxForVillain(villain, type); // Ajustar hitbox para otros villanos
-            villain.body.setVelocityY(0);
+            villain.body.setVelocityX(50); // Villanos se mueven horizontalmente
         }
     });
 };
 
-// Ajustar hitbox para el hada
-gameScene.setHitboxForFairy = function (fairy) {
-    fairy.body.setSize(45, 60); // Ajusta el tamaño del hitbox del hada
-    fairy.body.setOffset(0, 0); // Ajusta la posición del hitbox si es necesario
-};
 
-// Ajustar hitbox para otros villanos
-gameScene.setHitboxForVillain = function (villain, type) {
-    if (type === 'lobo') {
-        villain.body.setSize(40, 350); // Ajusta el tamaño del hitbox del lobo
-        villain.body.setOffset(0, 0); // Ajusta la posición del hitbox del lobo
-    } else if (type === 'planta') {
-        villain.body.setSize(50, 300); // Ajusta el tamaño del hitbox de la planta
-        villain.body.setOffset(0, 10); // Ajusta la posición del hitbox de la planta
-    } else {
-        villain.body.setSize(20, 350); // Tamaño por defecto para otros villanos
-        villain.body.setOffset(0, -1); // Offset por defecto
-    }
-};
-
-
-// Crear objetos de regalo
+// Creación de regalos
 gameScene.createGifts = function () {
-    this.giftGroup = this.physics.add.group();
+    this.giftsGroup = this.physics.add.group();
     this.gifts.forEach(({ x, y, type }) => {
-        let gift = this.giftGroup.create(x, y, type);
-        gift.setCollideWorldBounds(true);
-        gift.body.setBounce(0);
-        gift.body.setOffset(0, 200);
+        this.giftsGroup.create(x, y, type);
     });
 };
 
-// Ajustar hitbox para el hada
+gameScene.handleVillainCollision = function (player, villain) {
+    if (this.playerLives > 0 && !this.isGameOver) {
+        if (!player.invulnerable) {
+            player.invulnerable = true;
+            this.playerLives--;
+            console.log(`Vidas: ${this.playerLives}`);
 
+            if (this.playerLives <= 0) {
+                this.isGameOver = true;
+                this.gameOverText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Game Over', {
+                    fontSize: '64px',
+                    fill: '#FF0000'
+                }).setOrigin(0.5, 0.5);
+                this.time.delayedCall(2000, this.restartGame, [], this);
+            }
 
-// Función para actualizar el juego
+            // Ajustar la reacción del villano
+            villain.setVelocityY(-100);
+            this.time.delayedCall(1000, () => {
+                player.invulnerable = false;
+            });
+        }
+    }
+};
+
+// Reinicia el juego
+gameScene.restartGame = function () {
+    this.scene.restart(); // Reinicia la escena
+};
+
+// Actualiza el juego
 gameScene.update = function () {
-    this.player.setVelocityX(0);
-    
-    // Movimiento del jugador
+    if (this.isGameOver) return; // No actualizar si el juego ha terminado
+
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(-this.playerSpeed);
-        this.player.flipX = true;
+        this.player.flipX = true; // Cambia la dirección del sprite
     } else if (this.cursors.right.isDown) {
         this.player.setVelocityX(this.playerSpeed);
-        this.player.flipX = false;
+        this.player.flipX = false; // Cambia la dirección del sprite
+    } else {
+        this.player.setVelocityX(0);
     }
 
-    // Salto del jugador
+    // Salto
     if (this.cursors.up.isDown && this.player.body.touching.down) {
         this.player.setVelocityY(this.playerJump);
     }
-
-    // Lógica para los villanos
-    this.villains.children.iterate(villain => {
-        if (villain) {
-            this.updateVillain(villain);
-        }
-    });
-
-    // Lógica para los regalos
-    this.giftGroup.children.iterate(gift => {
-        if (gift) {
-            this.updateGift(gift);
-        }
-    });
-};
-
-// Actualizar la lógica de los villanos
-gameScene.updateVillain = function (villain) {
-    if (villain.body.allowGravity === false) {
-        if (villain.body.velocity.y <= 0) {
-            villain.body.setVelocityY(5); // Cambia la dirección de vuelo
-        }
-        if (villain.body.y <= 100 || villain.body.y >= 500) { // Cambia la dirección de vuelo
-            villain.body.setVelocityY(-villain.body.velocity.y);
-        }
-    }
-};
-
-// Actualizar la lógica de los regalos
-gameScene.updateGift = function (gift) {
-    // Lógica adicional para los regalos si es necesario
 };
 
 // Inicializa el juego
