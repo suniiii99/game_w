@@ -21,9 +21,9 @@ gameScene.init = function () {
     ];
 
     this.villainCoordinates = [
-        { x: 1000, y: 490, type: 'planta', isFlying: false },
+        { x: 950, y: 490, type: 'planta', isFlying: false },
         { x: 5700, y: 480, type: 'lobo', isFlying: false },
-        { x: 1800, y: 380, type: 'hada', isFlying: true }
+        { x: 1800, y: 300, type: 'hada', isFlying: true }
     ];
 
     this.platformCoordinates = [
@@ -151,23 +151,38 @@ gameScene.createVillains = function () {
     this.villains = this.physics.add.group();
     this.villainCoordinates.forEach(({ x, y, type, isFlying }) => {
         let villain = this.villains.create(x, y, type);
-        villain.setCollideWorldBounds(true); // Habilitar colisión con los límites del mundo
-        villain.body.setBounce(1); // Permitir rebote al tocar las paredes
-        villain.body.setAllowGravity(false); // Todos los villanos no tienen gravedad
+        villain.setCollideWorldBounds(true); 
+        villain.body.setBounce(1); 
+
+        // Ajustar gravedad
+        if (type === 'hada') {
+            villain.body.setAllowGravity(false); 
+            villain.body.setVelocityY(Phaser.Math.Between(-20, 20)); 
+        } else {
+            villain.body.setAllowGravity(true); 
+        }
 
         // Ajustar hitbox del lobo
         if (type === 'lobo') {
-            villain.body.setSize(villain.width * 0.4, villain.height * 0.2); // Reducir más el tamaño del hitbox
-            villain.body.setOffset(villain.width * 0.3, villain.height * 0.8); // Ajustar el offset del hitbox
+            villain.body.setSize(villain.width * 0.6, villain.height * 0.4); 
+            villain.body.setOffset(villain.width * 0.2, villain.height * 0.6); 
+        } else {
+            
+            villain.body.setSize(villain.width * 0.8, villain.height * 0.5); 
+            villain.body.setOffset(villain.width * 0.1, villain.height * 0.5); // Ajustar el offset
         }
 
-        if (isFlying) {
-            villain.body.setVelocityY(-20); // Velocidad inicial para el hada
-        } else {
+        // Ajustar offset para que caigan sobre el piso
+        villain.body.setOffset(0, 4); // Ajustar offset hacia arriba para todos los villanos
+
+        // Movimiento horizontal para villanos que no son el hada
+        if (!isFlying) {
             villain.body.setVelocityX(50); // Villanos se mueven horizontalmente
         }
     });
 };
+
+
 
 
 // Creación de regalos
@@ -187,10 +202,18 @@ gameScene.handleVillainCollision = function (player, villain) {
 
             if (this.playerLives <= 0) {
                 this.isGameOver = true;
-                this.gameOverText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Game Over', {
+
+                // Crear el texto de Game Over
+                this.gameOverText = this.add.text(player.x, player.y, 'Game Over', {
                     fontSize: '64px',
-                    fill: '#FF0000'
+                    fill: '#FF0000',
+                    fontFamily: 'Arial',
+                    align: 'center'
                 }).setOrigin(0.5, 0.5);
+
+                // Cambiar el fondo a rojo
+                this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0xff0000, 0.8).setOrigin(0);
+
                 this.time.delayedCall(2000, this.restartGame, [], this);
             }
 
@@ -203,14 +226,14 @@ gameScene.handleVillainCollision = function (player, villain) {
     }
 };
 
-// Reinicia el juego
-gameScene.restartGame = function () {
-    this.scene.restart(); // Reinicia la escena
-};
-
-// Actualiza el juego
 gameScene.update = function () {
-    if (this.isGameOver) return; // No actualizar si el juego ha terminado
+    if (this.isGameOver) {
+        // Asegurarse de que el texto sigue en la posición del jugador
+        if (this.gameOverText) {
+            this.gameOverText.setPosition(this.player.x, this.player.y);
+        }
+        return; // No actualizar si el juego ha terminado
+    }
 
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(-this.playerSpeed);
@@ -227,6 +250,12 @@ gameScene.update = function () {
         this.player.setVelocityY(this.playerJump);
     }
 };
+// Reinicia el juego
+gameScene.restartGame = function () {
+    this.scene.restart(); // Reinicia la escena
+};
+
+
 
 // Inicializa el juego
 let config = {
