@@ -119,12 +119,7 @@ gameScene.create = function () {
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
 
-    // Texto de puntaje
-    this.scoreText = this.add.text(16, 16, `Vidas: ${this.playerLives}`, {
-        fontSize: '32px',
-        fill: '#FFF'
-    });
-    this.scoreText.setScrollFactor(1)
+
 
     // Configuración de la entrada
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -136,6 +131,9 @@ gameScene.createFloors = function () {
     this.floorCoordinates.forEach(({ x, y, type }) => {
         this.floors.create(x, y, type).refreshBody();
     });
+};
+gameScene.updateLivesText = function () {
+    document.getElementById("lives").innerText = `Vidas: ${this.playerLives}`;
 };
 
 // Creación de las plataformas
@@ -164,24 +162,23 @@ gameScene.createVillains = function () {
 
         // Ajustar hitbox del lobo
         if (type === 'lobo') {
-            villain.body.setSize(villain.width * 0.6, villain.height * 0.4); 
-            villain.body.setOffset(villain.width * 0.2, villain.height * 0.6); 
+            villain.body.setSize(villain.width * 0.8, villain.height * 0.5); // Aumentar el ancho y reducir altura
+            villain.body.setOffset(villain.width * 0.1, villain.height * 20); // Ajustar el offset hacia arriba
         } else {
-            
+            // Ajustar hitbox para otros villanos
             villain.body.setSize(villain.width * 0.8, villain.height * 0.5); 
-            villain.body.setOffset(villain.width * 0.1, villain.height * 0.5); // Ajustar el offset
+            villain.body.setOffset(villain.width * 0.1, villain.height * 0.5);
         }
 
         // Ajustar offset para que caigan sobre el piso
-        villain.body.setOffset(0, 4); // Ajustar offset hacia arriba para todos los villanos
+        villain.body.setOffset(0, -1); // Ajuste adicional para todos los villanos
 
         // Movimiento horizontal para villanos que no son el hada
         if (!isFlying) {
-            villain.body.setVelocityX(50); // Villanos se mueven horizontalmente
+            villain.body.setVelocityX(50); 
         }
     });
 };
-
 
 
 
@@ -199,6 +196,9 @@ gameScene.handleVillainCollision = function (player, villain) {
             player.invulnerable = true;
             this.playerLives--;
             console.log(`Vidas: ${this.playerLives}`);
+            
+            // Actualizar el texto de vidas en pantalla
+            this.updateLivesText();
 
             if (this.playerLives <= 0) {
                 this.isGameOver = true;
@@ -212,7 +212,7 @@ gameScene.handleVillainCollision = function (player, villain) {
                 }).setOrigin(0.5, 0.5);
 
                 // Cambiar el fondo a rojo
-                this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0xff0000, 0.8).setOrigin(0);
+               
 
                 this.time.delayedCall(2000, this.restartGame, [], this);
             }
@@ -225,6 +225,7 @@ gameScene.handleVillainCollision = function (player, villain) {
         }
     }
 };
+
 
 gameScene.update = function () {
     if (this.isGameOver) {
@@ -253,6 +254,13 @@ gameScene.update = function () {
 // Reinicia el juego
 gameScene.restartGame = function () {
     this.scene.restart(); // Reinicia la escena
+    this.isGameOver = false;
+    this.playerLives = 3; // Reiniciar vidas a 3
+    console.log(`Vidas reiniciadas: ${this.playerLives}`);
+
+    // Actualizar el texto de vidas en pantalla
+    this.updateLivesText();
+
 };
 
 
