@@ -47,13 +47,7 @@ gameScene.init = function () {
     ];
 
     // Arreglo para "gifts" y "props"
-    this.gifts = [
-        { x: 1500, y: 750, type: 'libro' },
-        { x: 2500, y: 650, type: 'gato_negro' },
-        { x: 3000, y: 680, type: 'gato_blanco' },
-        { x: 4000, y: 750, type: 'varita' },
-        { x: 4900, y: 700, type: 'cura' }
-    ];
+    
 };
 
 // Carga los recursos
@@ -97,6 +91,8 @@ gameScene.create = function () {
     this.player.body.setAllowGravity(true);
     this.player.body.setBounce(0);
     this.player.body.setOffset(0, -15);
+    this.playerLives = 3; // Inicializar vidas
+    this.updateLivesText(); // Actualiza el texto en pantalla al inicio
 
     // Configuración de los límites del mundo
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
@@ -133,7 +129,12 @@ gameScene.createFloors = function () {
     });
 };
 gameScene.updateLivesText = function () {
-    document.getElementById("lives").innerText = `Vidas: ${this.playerLives}`;
+    const livesTextElement = document.getElementById("lives");
+    if (livesTextElement) {
+        livesTextElement.innerText = `Vidas: ${this.playerLives}`;
+    } else {
+        console.error("Elemento de vidas no encontrado en el DOM");
+    }
 };
 
 // Creación de las plataformas
@@ -184,11 +185,62 @@ gameScene.createVillains = function () {
 
 // Creación de regalos
 gameScene.createGifts = function () {
-    this.giftsGroup = this.physics.add.group();
-    this.gifts.forEach(({ x, y, type }) => {
-        this.giftsGroup.create(x, y, type);
+    this.giftsGroup = this.physics.add.group(); // Crea un grupo para los gifts
+
+    const giftPositions = [
+        { x: 5030, y: 440, type: 'cura' },        // Cura
+        { x: 600, y: 580, type: 'gato_negro' },  // Gato negro
+        { x: 900, y:  540, type: 'gato_blanco' }, // Gato blanco
+        { x: 3600, y: 450, type: 'libro' },       // Libro
+        { x: 1500, y: 500, type: 'varita' }       // Varita
+    ];
+
+    giftPositions.forEach(pos => {
+        const gift = this.giftsGroup.create(pos.x, pos.y, pos.type); // Crea el gift
+        gift.setDisplaySize(32, 32); // Cambia el tamaño del sprite si es necesario
+        gift.setCollideWorldBounds(true); // Evita que los gifts salgan del mundo
+        gift.body.setAllowGravity(false); // Desactiva la gravedad en los gifts
+        gift.body.setBounce(0.2); // Añade un poco de rebote para un efecto más realista
+
+        // Asigna el tipo al sprite
+        gift.type = pos.type;
+
+        // Configura colisiones con el piso y plataformas
+        this.physics.add.collider(gift, this.floors);       // Colisión con los pisos
+        this.physics.add.collider(gift, this.platforms);    // Colisión con las plataformas
     });
+
+    // Configura la detección de colisiones con el jugador
+    this.physics.add.overlap(this.player, this.giftsGroup, this.collectItem, null, this);
+
+    console.log('Gifts creados: ', this.giftsGroup.children.entries);
 };
+
+
+gameScene.collectItem = function (player, gift) {
+    console.log("Item recolectado:", gift.type); // Para verificar que se recolecta el ítem
+
+    if (gift.type === 'cura') {
+        if (this.playerLives < 3) {
+            this.playerLives++; // Incrementa las vidas
+            console.log(`Vida incrementada: ${this.playerLives}`); // Muestra cuántas vidas tiene después de sumar
+            this.updateLivesText(); // Actualiza el texto de vidas
+        } else {
+            console.log("La vida ya está al máximo."); // Mensaje si ya tiene 3 vidas
+        }
+    } else {
+        console.log(`${gift.type} recolectado, pero no afecta las vidas.`);
+    }
+
+    // Eliminar el item recolectado
+    gift.destroy(); // Elimina el objeto recolectado
+};
+
+
+
+
+
+
 
 gameScene.handleVillainCollision = function (player, villain) {
     if (this.playerLives > 0 && !this.isGameOver) {
@@ -238,10 +290,10 @@ gameScene.update = function () {
 
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(-this.playerSpeed);
-        this.player.flipX = true; // Cambia la dirección del sprite
+        this.player.flipX = true; // Cambia la dirección del sprite a la izquierda
     } else if (this.cursors.right.isDown) {
         this.player.setVelocityX(this.playerSpeed);
-        this.player.flipX = false; // Cambia la dirección del sprite
+        this.player.flipX = false; // Cambia la dirección del sprite a la derecha
     } else {
         this.player.setVelocityX(0);
     }
@@ -251,15 +303,20 @@ gameScene.update = function () {
         this.player.setVelocityY(this.playerJump);
     }
 };
+
+
+
+
 // Reinicia el juego
 gameScene.restartGame = function () {
     this.scene.restart(); // Reinicia la escena
     this.isGameOver = false;
     this.playerLives = 3; // Reiniciar vidas a 3
     console.log(`Vidas reiniciadas: ${this.playerLives}`);
-
+    this.giftsGroup.clear(true, true);
     // Actualizar el texto de vidas en pantalla
     this.updateLivesText();
+    this.createGifts();
 
 };
 
