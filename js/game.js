@@ -102,7 +102,7 @@ gameScene.create = function () {
     this.createPlatforms();
     this.createVillains();
     this.createGifts();
-
+    this.createJoystick();
     // Configuración de las colisiones
     this.physics.add.collider(this.player, this.floors);
     this.physics.add.collider(this.player, this.platforms);
@@ -115,7 +115,9 @@ gameScene.create = function () {
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
 
-
+    if (isMobile() && !game.scale.isFullscreen) {
+        game.scale.startFullscreen();
+    }
 
     // Configuración de la entrada
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -180,7 +182,36 @@ gameScene.createVillains = function () {
         }
     });
 };
-
+gameScene.handleJoystickMovement = function () {
+    // Manejo de movimiento
+    this.joystick.on('move', (evt, data) => {
+      if (data.direction) {
+        const angle = data.angle.degree;
+        const power = data.distance;
+  
+        // Calcular la velocidad en X
+        const vx = Math.cos(Phaser.Math.DegToRad(angle)) * power * 10;
+  
+        // Aplicar la velocidad al jugador en X
+        this.player.setVelocityX(vx);
+        this.player.flipX = vx < 0;
+  
+        // Saltar si el joystick se mueve hacia arriba y el jugador está en el suelo
+        if (data.direction.angle === 'up' && this.player.body.onFloor()) {
+          this.player.setVelocityY(this.playerJump);
+        }
+      } else {
+        this.player.setVelocityX(0); // Detener al jugador si no hay movimiento en el joystick
+      }
+    });
+  
+    // Manejar el fin del movimiento del joystick
+    this.joystick.on('end', () => {
+      this.player.setVelocityX(0);
+    });
+  };
+  
+  
 
 
 // Creación de regalos
@@ -197,7 +228,7 @@ gameScene.createGifts = function () {
 
     giftPositions.forEach(pos => {
         const gift = this.giftsGroup.create(pos.x, pos.y, pos.type); // Crea el gift
-        gift.setDisplaySize(32, 32); // Cambia el tamaño del sprite si es necesario
+        gift.setDisplaySize(50, 50); // Cambia el tamaño del sprite si es necesario
         gift.setCollideWorldBounds(true); // Evita que los gifts salgan del mundo
         gift.body.setAllowGravity(false); // Desactiva la gravedad en los gifts
         gift.body.setBounce(0.2); // Añade un poco de rebote para un efecto más realista
@@ -237,8 +268,57 @@ gameScene.collectItem = function (player, gift) {
 };
 
 
+function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
 
+// Configurar joystick y pantalla completa en móviles
+gameScene.createJoystick = function () {
+    if (!isMobile()) return; // Solo se crea el joystick en dispositivos móviles
 
+    const joystickArea = document.getElementById('joystick-area');
+    if (!joystickArea) {
+        console.error("El contenedor del joystick no existe");
+        return;
+    }
+
+    // Inicia el joystick con configuración dinámica
+    this.joystick = nipplejs.create({
+        zone: joystickArea,
+        mode: 'dynamic',
+        color: 'gray',
+        size: 100,
+        threshold: 0.5
+    });
+
+    this.handleJoystickMovement();
+};
+
+// Código para el control del joystick
+gameScene.handleJoystickMovement = function () {
+    if (!this.joystick) return;
+
+    this.joystick.on('move', (evt, data) => {
+        if (data.direction) {
+            const angle = data.angle.degree;
+            const power = data.distance;
+            const vx = Math.cos(Phaser.Math.DegToRad(angle)) * power * 10;
+            this.player.setVelocityX(vx);
+            this.player.flipX = vx < 0;
+
+            if (data.direction.angle === 'up' && this.player.body.onFloor()) {
+                this.player.setVelocityY(this.playerJump);
+            }
+        } else {
+            this.player.setVelocityX(0);
+        }
+    });
+
+    // Detener movimiento al finalizar joystick
+    this.joystick.on('end', () => {
+        this.player.setVelocityX(0);
+    });
+};
 
 
 
@@ -335,7 +415,8 @@ let config = {
             gravity: { y: 600 }, // Gravedad ajustada
             debug: false
         }
-    }
+    },
+    
 };
 
 
