@@ -93,7 +93,7 @@ gameScene.create = function () {
     this.player.body.setOffset(0, -15);
     this.playerLives = 3; // Inicializar vidas
     this.updateLivesText(); // Actualiza el texto en pantalla al inicio
-
+    this.physics.world.setBoundsCollision(true, true, true, false);
     // Configuración de los límites del mundo
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
 
@@ -103,6 +103,7 @@ gameScene.create = function () {
     this.createVillains();
     this.createGifts();
     this.createJoystick();
+      this.createPauseFunctionality();
     // Configuración de las colisiones
     this.physics.add.collider(this.player, this.floors);
     this.physics.add.collider(this.player, this.platforms);
@@ -115,9 +116,7 @@ gameScene.create = function () {
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
 
-    if (isMobile() && !game.scale.isFullscreen) {
-        game.scale.startFullscreen();
-    }
+  
 
     // Configuración de la entrada
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -357,6 +356,53 @@ gameScene.handleVillainCollision = function (player, villain) {
         }
     }
 };
+gameScene.handlePlayerDeath = function () {
+    if (this.playerLives > 0 && !this.isGameOver) {
+        this.isGameOver = true;
+
+        // Pausar la física y detener el seguimiento de la cámara
+        this.physics.pause();
+        this.cameras.main.stopFollow();
+
+        // Mostrar el fondo negro
+        const gameOverBackground = document.getElementById('game-over-background');
+        if (gameOverBackground) {
+            gameOverBackground.style.display = 'block';
+        }
+
+        // Mostrar el mensaje de "Game Over"
+        const gameOverTextElement = document.getElementById('game-over-text');
+        if (gameOverTextElement) {
+            gameOverTextElement.textContent = 'Game Over!';
+            gameOverTextElement.style.display = 'block';
+        }
+
+        // Reiniciar el juego después de 2 segundos
+        this.time.delayedCall(2000, this.restartGame, [], this);
+    }
+};
+
+gameScene.restartGame = function () {
+    // Reiniciar valores del juego
+    this.playerLives = 3; // Reiniciar vidas
+    this.isGameOver = false; // Desactivar estado de Game Over
+    console.log(`Vidas reiniciadas: ${this.playerLives}`);
+
+    // Ocultar el fondo negro y el mensaje de "Game Over"
+    const gameOverBackground = document.getElementById('game-over-background');
+    const gameOverTextElement = document.getElementById('game-over-text');
+    if (gameOverBackground) {
+        gameOverBackground.style.display = 'none';
+    }
+    if (gameOverTextElement) {
+        gameOverTextElement.style.display = 'none';
+    }
+
+    // Reiniciar la escena
+    ;
+};
+
+
 
 
 gameScene.update = function () {
@@ -365,15 +411,15 @@ gameScene.update = function () {
         if (this.gameOverText) {
             this.gameOverText.setPosition(this.player.x, this.player.y);
         }
-        return; // No actualizar si el juego ha terminado
+        return; 
     }
 
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(-this.playerSpeed);
-        this.player.flipX = true; // Cambia la dirección del sprite a la izquierda
+        this.player.flipX = true; 
     } else if (this.cursors.right.isDown) {
         this.player.setVelocityX(this.playerSpeed);
-        this.player.flipX = false; // Cambia la dirección del sprite a la derecha
+        this.player.flipX = false; 
     } else {
         this.player.setVelocityX(0);
     }
@@ -381,10 +427,57 @@ gameScene.update = function () {
     // Salto
     if (this.cursors.up.isDown && this.player.body.touching.down) {
         this.player.setVelocityY(this.playerJump);
-    }
+    }  if (this.player.y > this.physics.world.bounds.height) {
+        this.handlePlayerDeath();
+      }
+    
+
 };
 
 
+
+// Función para crear la funcionalidad de pausa
+gameScene.createPauseFunctionality = function () {
+    const pauseButton = document.getElementById('pause-button');
+    const pausePanel = document.getElementById('pause-panel');
+    const resumeButton = document.getElementById('resume-button');
+  
+    // Evento para pausar el juego usando el botón
+    pauseButton.addEventListener('click', () => this.togglePause());
+  
+    // Evento para reanudar el juego usando el botón
+    resumeButton.addEventListener('click', () => this.togglePause());
+  
+    // Evento para el botón del menú principal
+    document.getElementById("menu-button").addEventListener("click", () => {
+      // Redirige al menú principal
+      window.location.href = "menu.html";
+    });
+  
+    // Evento para la tecla ESC
+    this.input.keyboard.on('keydown-ESC', () => this.togglePause());
+  };
+  
+  // Función para alternar pausa/reanudación
+  gameScene.togglePause = function () {
+    if (!this.isPaused) {
+      this.isPaused = true;
+      this.physics.pause(); // Pausa el juego
+      this.cameras.main.setAlpha(0.5); // Efecto de transparencia
+      document.getElementById('pause-panel').style.display = 'flex'; // Muestra el panel de pausa
+    } else {
+      this.isPaused = false;
+      this.physics.resume(); // Reanuda el juego
+      this.cameras.main.setAlpha(1); // Elimina el efecto de transparencia
+      document.getElementById('pause-panel').style.display = 'none'; // Oculta el panel de pausa
+    }
+  };
+  
+  document.getElementById("menu-button").addEventListener("click", () => {
+    // Redirige al menú principal
+    window.location.href = "menu.html";
+  });
+  
 
 
 // Reinicia el juego
@@ -397,8 +490,13 @@ gameScene.restartGame = function () {
     // Actualizar el texto de vidas en pantalla
     this.updateLivesText();
     this.createGifts();
-
+    this.isPaused = false; // Asegurarse de que el juego no esté en pausa
+    this.physics.resume(); // Reanudar la física
+    this.cameras.main.setAlpha(1); // Restaurar la opacidad de la cámara
+    this.togglePause
+ 
 };
+
 
 
 

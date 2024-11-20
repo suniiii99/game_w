@@ -34,7 +34,7 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/phaser@v3.85.2/dist/phaser.min.js"></script>
-    <div class="Text-live" id="lives" style="position: fixed; top: 16px; left: 16px; color: rgb(0, 0, 0); font-size: 30px;">
+    <div class="pause-title" id="lives" style="position: fixed; top: 16px; left: 16px; color: rgb(0, 0, 0); font-size: 30px;">
         Lives: 3
     </div>
     <script src="https://cdn.jsdelivr.net/npm/phaser@v3.85.2/dist/phaser.min.js"></script>
@@ -49,7 +49,25 @@
     z-index: 10;
 "></div>
 
- 
+
+<!-- Botón de pausa -->
+<div id="pause-button" class="pause-btn">
+    <img src="./img/info.png" alt="Pause">
+</div>
+<!-- Panel de pausa -->
+<div id="pause-panel" class="pause-overlay">
+    <div class="pause-content">
+        <h1 class="pause-title">Game Paused</h1>
+        <button id="resume-button" class="resume-btn">Continue</button>
+        <button id="menu-button" class="menu-btn">Menu</button>
+    </div>
+</div>
+
+<div id="game-over">Game Over</div>
+
+
+
+
     <script type="module" src="./js/game.js"></script>
 </body>
 
