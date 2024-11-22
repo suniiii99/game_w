@@ -1,0 +1,61 @@
+{
+  "floors": [
+      { "x": 200, "y": 650, "type": "floor_1" },
+      { "x": 950, "y": 630, "type": "floor_3" },
+      { "x": 1400, "y": 620, "type": "floor_3" },
+      { "x": 2150, "y": 640, "type": "floor_1" },
+      { "x": 3200, "y": 634, "type": "floor_1" },
+      { "x": 4090, "y": 625, "type": "floor_2" },
+      { "x": 5350, "y": 630, "type": "floor_1" }
+  ],
+  "villains": [
+      { "x": 950, "y": 490, "type": "planta", "isFlying": false },
+      { "x": 5700, "y": 480, "type": "lobo", "isFlying": false },
+      { "x": 1800, "y": 300, "type": "hada", "isFlying": true }
+  ],
+  "platforms": [
+      { "x": 730, "y": 500, "type": "plataform" },
+      { "x": 1180, "y": 500, "type": "plataform" },
+      { "x": 1600, "y": 490, "type": "plataform" },
+      { "x": 1400, "y": 200, "type": "plataform2" },
+      { "x": 1490, "y": 300, "type": "plataform2" },
+      { "x": 1700, "y": 400, "type": "plataform2" },
+      { "x": 1880, "y": 430, "type": "plataform2" },
+      { "x": 2600, "y": 500, "type": "plataform" },
+      { "x": 2700, "y": 400, "type": "plataform" },
+      { "x": 3800, "y": 500, "type": "plataform" },
+      { "x": 3610, "y": 490, "type": "plataform" },
+      { "x": 4450, "y": 500, "type": "plataform2" },
+      { "x": 4600, "y": 450, "type": "plataform" },
+      { "x": 4800, "y": 500, "type": "plataform2" },
+      { "x": 5200, "y": 490, "type": "plataform" },
+      { "x": 5300, "y": 400, "type": "plataform2" },
+      { "x": 5500, "y": 480, "type": "plataform" }
+  ],
+  "gifts": [
+    { "x": 5030, "y": 440, "type": "cura" },
+    { "x": 600, "y": 580, "type": "gato_negro" },
+    { "x": 900, "y": 540, "type": "gato_blanco" },
+    { "x": 3600, "y": 450, "type": "libro" },
+    { "x": 1500, "y": 500, "type": "varita" },
+    { "x": 730, "y": 470, "type": "flor" },
+    { "x": 1180, "y": 470, "type": "flor" },
+    { "x": 1600, "y": 460, "type": "flor" },
+    { "x": 1400, "y": 150, "type": "flor" },
+    { "x": 1490, "y": 250, "type": "flor" },
+    { "x": 1700, "y": 340, "type": "flor" },
+    { "x": 1880, "y": 370, "type": "flor" },
+    { "x": 2600, "y": 470, "type": "flor" },
+    { "x": 2700, "y": 370, "type": "flor" },
+    { "x": 3800, "y": 470, "type": "flor" },
+    { "x": 3610, "y": 460, "type": "flor" },
+    { "x": 4450, "y": 470, "type": "flor" },
+    { "x": 4600, "y": 420, "type": "flor" },
+    { "x": 4800, "y": 470, "type": "flor" },
+    { "x": 5200, "y": 460, "type": "flor" },
+    { "x": 5300, "y": 370, "type": "flor" },
+    { "x": 5500, "y": 450, "type": "flor" }
+  
+
+  ]
+}

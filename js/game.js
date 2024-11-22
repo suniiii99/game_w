@@ -2,57 +2,24 @@ let gameScene = new Phaser.Scene('Game');
 
 // Inicializa los parámetros del jugador
 gameScene.init = function () {
-    this.playerSpeed = 500;
-    this.playerJump = -1000;
+    this.playerSpeed = 300;
+    this.playerJump = -600;
     this.playerLives = 3; // Vidas del jugador
     this.scoreText = null; // Texto para mostrar el puntaje
     this.isGameOver = false; // Estado del juego
     this.gameOverText = null; // Texto de juego terminado
+    this.score = 0; // Inicializa el puntaje en 0
 
-    // Coordenadas de los pisos
-    this.floorCoordinates = [
-        { x: 200, y: 650, type: 'floor_1' },
-        { x: 950, y: 630, type: 'floor_3' },
-        { x: 1400, y: 620, type: 'floor_3' },
-        { x: 2150, y: 640, type: 'floor_1' },
-        { x: 3200, y: 634, type: 'floor_1' },
-        { x: 4090, y: 625, type: 'floor_2' },
-        { x: 5350, y: 630, type: 'floor_1' }
-    ];
-
-    this.villainCoordinates = [
-        { x: 950, y: 490, type: 'planta', isFlying: false },
-        { x: 5700, y: 480, type: 'lobo', isFlying: false },
-        { x: 1800, y: 300, type: 'hada', isFlying: true }
-    ];
-
-    this.platformCoordinates = [
-        { x: 730, y: 500, type: 'plataform' },
-        { x: 1180, y: 500, type: 'plataform' },
-        { x: 1600, y: 490, type: 'plataform' },
-        { x: 1400, y: 200, type: 'plataform2' },
-        { x: 1490, y: 300, type: 'plataform2' },
-        { x: 1700, y: 400, type: 'plataform2' },
-        { x: 1880, y: 430, type: 'plataform2' },
-        { x: 2600, y: 500, type: 'plataform' },
-        { x: 2700, y: 400, type: 'plataform' },
-        { x: 3800, y: 500, type: 'plataform' },
-        { x: 3610, y: 490, type: 'plataform' },
-        { x: 4450, y: 500, type: 'plataform2' },
-        { x: 4600, y: 450, type: 'plataform' },
-        { x: 4800, y: 500, type: 'plataform2' },
-        { x: 5200, y: 490, type: 'plataform' },
-        { x: 5300, y: 400, type: 'plataform2' },
-        { x: 5500, y: 480, type: 'plataform' }
-    ];
-
-    // Arreglo para "gifts" y "props"
+ 
+   
     
 };
 
 // Carga los recursos
 gameScene.preload = function () {
     this.loadAssets();
+    this.load.json('coordinates', '../coordinates/coordinates.json');
+    
 };
 
 // Función refactorizada para cargar recursos
@@ -73,18 +40,27 @@ gameScene.loadAssets = function () {
     this.load.image('gato_blanco', '../img/gato_blanco.png');
     this.load.image('varita', '../img/varita.png');
     this.load.image('cura', '../img/cura.png');
+    this.load.image('flor', '../img/flor.png');
 };
 
 // Crea los elementos del juego
 gameScene.create = function () {
+    // Fondo y capa intermedia
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(0, 0, 'mid_layer').setOrigin(0, 0);
 
+    // Cargar coordenadas desde el archivo JSON
+    const coordinates = this.cache.json.get('coordinates');
+    console.log('Datos del JSON cargados:', coordinates);
+
+    this.floorCoordinates = coordinates.floors;
+    this.villainCoordinates = coordinates.villains;
+    this.platformCoordinates = coordinates.platforms;
+
+    // Crear el jugador
     const firstFloor = this.floorCoordinates[0];
     const playerStartingX = firstFloor.x;
     const playerStartingY = firstFloor.y - 1080;
-
-    // Crear el jugador
     this.player = this.physics.add.sprite(playerStartingX, playerStartingY, 'player');
     this.player.setCollideWorldBounds(true);
     this.player.body.setGravityY(600);
@@ -92,31 +68,29 @@ gameScene.create = function () {
     this.player.body.setBounce(0);
     this.player.body.setOffset(0, -15);
     this.playerLives = 3; // Inicializar vidas
-    this.updateLivesText(); // Actualiza el texto en pantalla al inicio
-    this.physics.world.setBoundsCollision(true, true, true, false);
+    this.updateLivesText(); // Actualiza el texto de vidas en pantalla
+
     // Configuración de los límites del mundo
     this.physics.world.setBounds(0, 0, 5760, this.background.height);
+    this.physics.world.setBoundsCollision(true, true, true, false);
 
     // Crear pisos, plataformas, villanos y regalos
-    this.createFloors();
-    this.createPlatforms();
-    this.createVillains();
+    this.createFloors(); // Crear los pisos
+    this.createPlatforms(); // Crear las plataformas
+    this.createVillains(); // Crear los villanos
     this.createGifts();
-    this.createJoystick();
-      this.createPauseFunctionality();
-    // Configuración de las colisiones
+
+    // Colisiones
     this.physics.add.collider(this.player, this.floors);
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.villains, this.floors);
     this.physics.add.collider(this.villains, this.platforms);
-    this.physics.add.collider(this.villains, this.player, this.handleVillainCollision, null, this); // Colisión del jugador con villanos
+    this.physics.add.collider(this.villains, this.player, this.handleVillainCollision, null, this);
 
     // Configuración de la cámara
     this.cameras.main.setBounds(0, 0, 5760, this.background.height);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setZoom(config.height / this.background.height);
-
-  
 
     // Configuración de la entrada
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -129,6 +103,7 @@ gameScene.createFloors = function () {
         this.floors.create(x, y, type).refreshBody();
     });
 };
+
 gameScene.updateLivesText = function () {
     const livesTextElement = document.getElementById("lives");
     if (livesTextElement) {
@@ -146,41 +121,42 @@ gameScene.createPlatforms = function () {
     });
 };
 
+
 // Creación de los villanos
 gameScene.createVillains = function () {
     this.villains = this.physics.add.group();
     this.villainCoordinates.forEach(({ x, y, type, isFlying }) => {
         let villain = this.villains.create(x, y, type);
-        villain.setCollideWorldBounds(true); 
-        villain.body.setBounce(1); 
+        villain.setCollideWorldBounds(true);
+        villain.body.setBounce(1);
 
-        // Ajustar gravedad
+        // Ajuste de gravedad para el hada
         if (type === 'hada') {
-            villain.body.setAllowGravity(false); 
-            villain.body.setVelocityY(Phaser.Math.Between(-20, 20)); 
+            villain.body.setAllowGravity(false);
+            villain.body.setVelocityY(Phaser.Math.Between(-20, 20)); // Movimiento aleatorio en Y
         } else {
             villain.body.setAllowGravity(true); 
         }
 
-        // Ajustar hitbox del lobo
+        // Ajustes de hitbox para el lobo y otros villanos
         if (type === 'lobo') {
-            villain.body.setSize(villain.width * 0.8, villain.height * 0.5); // Aumentar el ancho y reducir altura
-            villain.body.setOffset(villain.width * 0.1, villain.height * 20); // Ajustar el offset hacia arriba
+            villain.body.setSize(villain.width * 0.8, villain.height * 0.5);
+            villain.body.setOffset(villain.width * 0.1, villain.height * 0.2); // Asegúrate de que la hitbox esté bien colocada
         } else {
-            // Ajustar hitbox para otros villanos
             villain.body.setSize(villain.width * 0.8, villain.height * 0.5); 
             villain.body.setOffset(villain.width * 0.1, villain.height * 0.5);
         }
 
-        // Ajustar offset para que caigan sobre el piso
-        villain.body.setOffset(0, -1); // Ajuste adicional para todos los villanos
+        // Ajuste de offset para que caigan sobre el piso
+        villain.body.setOffset(0, -1);
 
         // Movimiento horizontal para villanos que no son el hada
         if (!isFlying) {
-            villain.body.setVelocityX(50); 
+            villain.body.setVelocityX(Phaser.Math.Between(50, 100)); // Variar la velocidad horizontal
         }
     });
 };
+
 gameScene.handleJoystickMovement = function () {
     // Manejo de movimiento
     this.joystick.on('move', (evt, data) => {
@@ -215,55 +191,80 @@ gameScene.handleJoystickMovement = function () {
 
 // Creación de regalos
 gameScene.createGifts = function () {
-    this.giftsGroup = this.physics.add.group(); // Crea un grupo para los gifts
+    // Obtén las posiciones de los gifts desde el JSON
+    const giftPositions = this.cache.json.get('coordinates').gifts;
 
-    const giftPositions = [
-        { x: 5030, y: 440, type: 'cura' },        // Cura
-        { x: 600, y: 580, type: 'gato_negro' },  // Gato negro
-        { x: 900, y:  540, type: 'gato_blanco' }, // Gato blanco
-        { x: 3600, y: 450, type: 'libro' },       // Libro
-        { x: 1500, y: 500, type: 'varita' }       // Varita
-    ];
+    // Crea el grupo para los gifts
+    this.giftsGroup = this.physics.add.group();
 
     giftPositions.forEach(pos => {
-        const gift = this.giftsGroup.create(pos.x, pos.y, pos.type); // Crea el gift
-        gift.setDisplaySize(50, 50); // Cambia el tamaño del sprite si es necesario
+        const gift = this.giftsGroup.create(pos.x, pos.y, pos.type);
+
         gift.setCollideWorldBounds(true); // Evita que los gifts salgan del mundo
         gift.body.setAllowGravity(false); // Desactiva la gravedad en los gifts
-        gift.body.setBounce(0.2); // Añade un poco de rebote para un efecto más realista
+        gift.body.setBounce(0.2); // Añade un poco de rebote
 
         // Asigna el tipo al sprite
         gift.type = pos.type;
 
         // Configura colisiones con el piso y plataformas
-        this.physics.add.collider(gift, this.floors);       // Colisión con los pisos
-        this.physics.add.collider(gift, this.platforms);    // Colisión con las plataformas
+        this.physics.add.collider(gift, this.floors);
+        this.physics.add.collider(gift, this.platforms);
     });
 
     // Configura la detección de colisiones con el jugador
     this.physics.add.overlap(this.player, this.giftsGroup, this.collectItem, null, this);
 
-    console.log('Gifts creados: ', this.giftsGroup.children.entries);
+    console.log('Gifts creados desde JSON: ', this.giftsGroup.children.entries);
 };
 
 
 gameScene.collectItem = function (player, gift) {
-    console.log("Item recolectado:", gift.type); // Para verificar que se recolecta el ítem
+    console.log("Item detectado:", gift.type);
+
+    // Evitar que los gatos sean recolectados
+    if (gift.type === 'gato_negro' || gift.type === 'gato_blanco') {
+        console.log("Los gatos no pueden ser recolectados.");
+        return; // Salir del método sin hacer nada
+    }
 
     if (gift.type === 'cura') {
         if (this.playerLives < 3) {
-            this.playerLives++; // Incrementa las vidas
-            console.log(`Vida incrementada: ${this.playerLives}`); // Muestra cuántas vidas tiene después de sumar
-            this.updateLivesText(); // Actualiza el texto de vidas
+            this.playerLives++;
+            console.log(`Vida incrementada: ${this.playerLives}`);
+            this.updateLivesText();
         } else {
-            console.log("La vida ya está al máximo."); // Mensaje si ya tiene 3 vidas
+            console.log("La vida ya está al máximo.");
         }
-    } else {
-        console.log(`${gift.type} recolectado, pero no afecta las vidas.`);
     }
 
+    // Incrementar el score al recolectar el gift
+    this.score++;
+    console.log(`Puntaje: ${this.score}`);
+    this.updateScoreDiv(); // Actualiza el contenido del div en el HTML
+
     // Eliminar el item recolectado
-    gift.destroy(); // Elimina el objeto recolectado
+    gift.destroy();
+};
+
+
+
+
+gameScene.updateScoreDiv = function () {
+    const scoreDiv = document.getElementById('score');
+    if (scoreDiv) {
+        scoreDiv.textContent = `Score: ${this.score}`;
+    }
+};
+
+gameScene.resetScoreText = function () {
+    const scoreTextElement = document.getElementById("score");
+    if (scoreTextElement) {
+        scoreTextElement.innerText = "Score: 0";
+        this.score = 0; // Reinicia el puntaje en la lógica del juego
+    } else {
+        console.error("Elemento de puntaje no encontrado en el DOM");
+    }
 };
 
 
@@ -382,25 +383,7 @@ gameScene.handlePlayerDeath = function () {
     }
 };
 
-gameScene.restartGame = function () {
-    // Reiniciar valores del juego
-    this.playerLives = 3; // Reiniciar vidas
-    this.isGameOver = false; // Desactivar estado de Game Over
-    console.log(`Vidas reiniciadas: ${this.playerLives}`);
 
-    // Ocultar el fondo negro y el mensaje de "Game Over"
-    const gameOverBackground = document.getElementById('game-over-background');
-    const gameOverTextElement = document.getElementById('game-over-text');
-    if (gameOverBackground) {
-        gameOverBackground.style.display = 'none';
-    }
-    if (gameOverTextElement) {
-        gameOverTextElement.style.display = 'none';
-    }
-
-    // Reiniciar la escena
-    ;
-};
 
 
 
@@ -480,22 +463,32 @@ gameScene.createPauseFunctionality = function () {
   
 
 
+
+
+
+
+  
+
+
 // Reinicia el juego
 gameScene.restartGame = function () {
-    this.scene.restart(); // Reinicia la escena
+    this.scene.restart();
     this.isGameOver = false;
-    this.playerLives = 3; // Reiniciar vidas a 3
+    this.playerLives = 3; // Reinicia vidas a 3
+    this.score = 0; // Reinicia el puntaje en la lógica del juego
     console.log(`Vidas reiniciadas: ${this.playerLives}`);
+    console.log(`Puntaje reiniciado: ${this.score}`);
     this.giftsGroup.clear(true, true);
-    // Actualizar el texto de vidas en pantalla
     this.updateLivesText();
+    this.resetScoreText(); // Llama al método para actualizar el DOM
     this.createGifts();
-    this.isPaused = false; // Asegurarse de que el juego no esté en pausa
-    this.physics.resume(); // Reanudar la física
-    this.cameras.main.setAlpha(1); // Restaurar la opacidad de la cámara
-    this.togglePause
- 
+    this.isPaused = false;
+    this.physics.resume();
+    this.cameras.main.setAlpha(1);
+    this.togglePause = false;
+    this.createPauseFunctionality();
 };
+
 
 
 
