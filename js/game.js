@@ -458,7 +458,7 @@ gameScene.createPauseFunctionality = function () {
     this.input.keyboard.on('keydown-ESC', () => this.togglePause());
   };
   
-  // Función para alternar pausa/reanudación
+  // Función para alternar pausa/reanudación"
   gameScene.togglePause = function () {
     if (!this.isPaused) {
       this.isPaused = true;
