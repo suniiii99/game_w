@@ -9,7 +9,7 @@ gameScene.init = function () {
     this.isGameOver = false; // Estado del juego
     this.gameOverText = null; // Texto de juego terminado
     this.score = 0; // Inicializa el puntaje en 0
-
+  
  
    
     
@@ -46,6 +46,7 @@ gameScene.loadAssets = function () {
 // Crea los elementos del juego
 gameScene.create = function () {
     // Fondo y capa intermedia
+    gameScene.isPaused = false;
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(0, 0, 'mid_layer').setOrigin(0, 0);
 
@@ -79,6 +80,8 @@ gameScene.create = function () {
     this.createPlatforms(); // Crear las plataformas
     this.createVillains(); // Crear los villanos
     this.createGifts();
+    this.createPauseFunctionality();
+    this.createJoystick();
 
     // Colisiones
     this.physics.add.collider(this.player, this.floors);
@@ -141,7 +144,7 @@ gameScene.createVillains = function () {
         // Ajustes de hitbox para el lobo y otros villanos
         if (type === 'lobo') {
             villain.body.setSize(villain.width * 0.8, villain.height * 0.5);
-            villain.body.setOffset(villain.width * 0.1, villain.height * 0.2); // Asegúrate de que la hitbox esté bien colocada
+            villain.body.setOffset(villain.width * 0.1, villain.height * 0.2); 
         } else {
             villain.body.setSize(villain.width * 0.8, villain.height * 0.5); 
             villain.body.setOffset(villain.width * 0.1, villain.height * 0.5);
@@ -357,6 +360,8 @@ gameScene.handleVillainCollision = function (player, villain) {
         }
     }
 };
+
+
 gameScene.handlePlayerDeath = function () {
     if (this.playerLives > 0 && !this.isGameOver) {
         this.isGameOver = true;
@@ -460,10 +465,6 @@ gameScene.createPauseFunctionality = function () {
     // Redirige al menú principal
     window.location.href = "menu.html";
   });
-  
-
-
-
 
 
 
@@ -485,8 +486,8 @@ gameScene.restartGame = function () {
     this.isPaused = false;
     this.physics.resume();
     this.cameras.main.setAlpha(1);
-    this.togglePause = false;
-    this.createPauseFunctionality();
+
+
 };
 
 
