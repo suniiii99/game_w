@@ -35,6 +35,10 @@ body {
   height: 69rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-family: "Lilita One", sans-serif;
   color: #990000;
@@ -1023,6 +1027,11 @@ footer {
   position: relative;
 }
 
+.link {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Hereda el color del texto del padre */
+}
+
 .login-container {
   position: absolute;
   align-content: center;
@@ -1081,8 +1090,11 @@ footer {
 .logo {
   display: block;
   margin: 0 auto 2rem;
-  width: 35%;
-  padding-top: 173px;
+  width: 50%; /* Aumenta el tamaño del logo */
+  height: auto; /* Para mantener la proporción del logo */
+  padding-top: 173px; /* Ajusta según el espacio que necesites arriba */
+  background: url(../img/logo.png) no-repeat center center;
+  background-size: contain; /* Asegura que la imagen se ajuste correctamente dentro del contenedor */
 }
 @media only screen and (min-width: 481px) and (max-width: 924px) and (orientation: landscape) {
   .logo {

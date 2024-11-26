@@ -18,29 +18,29 @@ gameScene.init = function () {
 // Carga los recursos
 gameScene.preload = function () {
     this.loadAssets();
-    this.load.json('coordinates', '../coordinates/coordinates.json');
+    this.load.json('coordinates', './coordinates/coordinates.json');
     
 };
 
 // Función refactorizada para cargar recursos
 gameScene.loadAssets = function () {
-    this.load.image('background', '../img/Fondo.png');
-    this.load.image('mid_layer', '../img/capa_medio.png');
-    this.load.image('player', '../img/personaje_animate.png');
-    this.load.image('floor_2', '../img/floor2.png');
-    this.load.image('floor_1', '../img/floor1.png');
-    this.load.image('floor_3', '../img/floor3.png');
-    this.load.image('plataform', '../img/Plataforma.png');
-    this.load.image('plataform2', '../img/plataform2.png');
-    this.load.image('planta', '../img/planta.png');
-    this.load.image('lobo', '../img/villano_lobo.png');
-    this.load.image('hada', '../img/hada.png');
-    this.load.image('libro', '../img/libro.png');
-    this.load.image('gato_negro', '../img/gato_negro.png');
-    this.load.image('gato_blanco', '../img/gato_blanco.png');
-    this.load.image('varita', '../img/varita.png');
-    this.load.image('cura', '../img/cura.png');
-    this.load.image('flor', '../img/flor.png');
+    this.load.image('background', './img/Fondo.png');
+    this.load.image('mid_layer', './img/capa_medio.png');
+    this.load.image('player', './img/personaje_animate.png');
+    this.load.image('floor_2', './img/floor2.png');
+    this.load.image('floor_1', './img/floor1.png');
+    this.load.image('floor_3', './img/floor3.png');
+    this.load.image('plataform', './img/Plataforma.png');
+    this.load.image('plataform2', './img/plataform2.png');
+    this.load.image('planta', './img/planta.png');
+    this.load.image('lobo', './img/villano_lobo.png');
+    this.load.image('hada', './img/hada.png');
+    this.load.image('libro', './img/libro.png');
+    this.load.image('gato_negro', './img/gato_negro.png');
+    this.load.image('gato_blanco', './img/gato_blanco.png');
+    this.load.image('varita', './img/varita.png');
+    this.load.image('cura', './img/cura.png');
+    this.load.image('flor', './img/flor.png');
 };
 
 // Crea los elementos del juego
@@ -439,7 +439,7 @@ gameScene.createPauseFunctionality = function () {
     // Evento para el botón del menú principal
     document.getElementById("menu-button").addEventListener("click", () => {
       // Redirige al menú principal
-      window.location.href = "menu.html";
+      window.location.href = "menu.php";
     });
   
     // Evento para la tecla ESC

@@ -3,8 +3,13 @@
 .logo {
   display: block;
   margin: 0 auto 2rem;
-  width: 35%;
-  padding-top: 173px;
+  width: 50%; /* Aumenta el tamaño del logo */
+  height: auto; /* Para mantener la proporción del logo */
+  padding-top: 173px; /* Ajusta según el espacio que necesites arriba */
+  background: url(../img/logo.png) no-repeat center center;
+  background-size: contain; /* Asegura que la imagen se ajuste correctamente dentro del contenedor */
+
+
   @include respond-to($phone-landscape){
     display: block;
     margin: 0 auto 2rem;

@@ -1,3 +1,19 @@
+
+<?php
+// Inicia la sesión
+session_start();
+
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    // Si no hay sesión, redirige al login
+    header("Location: login.php");
+    exit();
+}
+
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -35,7 +51,7 @@
 
   </div>
   <header>
-      <img class="logo" src="/img/logo.png" alt="logo" />
+  <div class= "logo"></div>
       <nav>
           <ul class="top-nav">
               <li><a class="nav-list-link" href="game.html">Play</a></li>
@@ -48,3 +64,4 @@
 
 
 </html>
+
