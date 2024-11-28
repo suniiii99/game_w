@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <img src="./img/Play.png" alt="Play">
                     <span>Play</span>
                 </a>
-                <a href="ranking.html">
+                <a href="ranking.php">
                     <img src="./img/Users.png" alt="Ranking">
                     <span>Ranking</span>
                 </a>

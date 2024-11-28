@@ -1,3 +1,13 @@
+<?php
+require 'connection.php'; // Incluye tu archivo de conexión
+
+// Consulta para obtener los 10 mejores jugadores
+$sql = "SELECT nombre_usuario, score FROM usuarios ORDER BY score DESC LIMIT 10";
+$result = $conn->query($sql);
+
+// Comienza el HTML
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +20,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
     <header>
         <div class="header-content">
             <img src="./img/logo_gatoB.png" alt="The Flower Witch Logo" class="header-logo">
             <div class="menu-hamburger" onclick="toggleMenu()">
-               <img src="./img/hamburgerMenu.png" alt="Menu Icon" />
-           </div>
+                <img src="./img/hamburgerMenu.png" alt="Menu Icon" />
+            </div>
             <nav class="menu-icons">
                 <a href="credits.html">
                     <img src="./img/Info.png" alt="Credits">
@@ -37,13 +45,13 @@
                     <img src="./img/Play.png" alt="Play">
                     <span>Play</span>
                 </a>
-                <a href="ranking.html">
+                <a href="ranking.php">
                     <img src="./img/Users.png" alt="Ranking">
                     <span>Ranking</span>
                 </a>
             </nav>
         </div>
-    <header>
+    </header>
     <section class="game-section">
         <section class="ranking-section">
             <div class="ranking-container">
@@ -51,44 +59,32 @@
                 <table class="ranking-table">
                     <thead>
                         <tr>
-                            <th>Rank   </th>
+                            <th>Rank</th>
                             <th>User</th>
                             <th>Points</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Usuario1</td>
-                            <td>1500</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Usuario2</td>
-                            <td>1200</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Usuario3</td>
-                            <td>1000</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Usuario4</td>
-                            <td>900</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Usuario5</td>
-                            <td>800</td>
-                        </tr>
-                        <!-- Más filas según sea necesario -->
+                        <?php
+                        // Comprobamos si hay resultados
+                        if ($result->num_rows > 0) {
+                            $rank = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $rank++ . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nombre_usuario']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['score']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='3'>No hay jugadores en el ranking.</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </section>
     </section>
-
     <footer>
         <div class="footer-content">
             <a href="index.html">
@@ -110,7 +106,10 @@
             </div>
         </div>
     </footer>
-    
-<script src="./js/hamburger.js"></script>
 </body>
 </html>
+
+<?php
+// Cerrar la conexión
+$conn->close();
+?>
